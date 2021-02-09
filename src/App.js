@@ -12,7 +12,8 @@ const ACCESS_KEY_TIMEOUT = 10000;
 
 function App() {
   const [userState, userDispatch] = React.useReducer(userReducer, null);
-  const { token } = useAuthToken();
+
+  const { token: tokenCookie } = useAuthToken();
 
   useAuthHeader(userState?.token);
 
@@ -22,8 +23,8 @@ function App() {
   );
 
   React.useEffect(() => {
-    userDispatch({ type: "SET_TOKEN", payload: token });
-  }, [token]);
+    userDispatch({ type: "SET_TOKEN", payload: tokenCookie });
+  }, [tokenCookie]);
 
   React.useEffect(() => {
     userDispatch({ type: "SET_TOKEN", payload: newToken });

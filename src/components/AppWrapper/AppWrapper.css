@@ -1,4 +1,4 @@
-.grid-home {
+.wrapper-grid {
   display: grid;
   grid-template-columns: auto minmax(20rem, 72rem) auto;
 }
