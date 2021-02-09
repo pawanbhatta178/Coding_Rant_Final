@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-primary {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+.bg-accent {
+  @apply bg-purple-800 dark:bg-purple-500;
+}
+
+.text-primary {
+  @apply text-gray-900 dark:text-gray-50;
+}
+
+.text-secondary {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.text-accent {
+  @apply text-purple-900 dark:text-purple-200;
+}
