@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import AppWrapper from "../../components/AppWrapper/AppWrapper";
+import GridWrapper from "../../components/Wrapper/GridWrapper";
 
 const Home = () => {
   return (
-    <AppWrapper>
+    <GridWrapper>
       <NavBar />
-      <div className="flex flex-col px-4 sm:px-6 md:px-8 pb-12 h-full">
+      <div className="flex flex-col px-4 sm:px-6 md:px-8 pb-12 min-h-screen">
         <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-primary mt-10 mb-8 sm:mt-14 sm:mb-10 ">
           Start understanding the code and algorithms you write.
         </h1>
@@ -37,7 +38,8 @@ const Home = () => {
           </Link>
         </div>
       </div>
-    </AppWrapper>
+      <Footer />
+    </GridWrapper>
   );
 };
 

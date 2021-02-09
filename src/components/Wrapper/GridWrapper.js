@@ -1,7 +1,7 @@
 import React from "react";
-import "./AppWrapper.css";
+import "./GridWrapper.css";
 
-const AppWrapper = ({ children }) => {
+const GridWrapper = ({ children }) => {
   return (
     <div className="wrapper-grid max-w bg-primary text-primary">
       <div></div>
@@ -11,4 +11,4 @@ const AppWrapper = ({ children }) => {
   );
 };
 
-export default AppWrapper;
+export default GridWrapper;
