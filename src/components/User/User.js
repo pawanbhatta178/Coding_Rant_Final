@@ -1,9 +1,19 @@
 import React from "react";
-import useUser from "./useUser";
+import { useQuery } from "react-query";
+import { getUserDetails } from "../../api/User";
+import { HiUserCircle } from "react-icons/hi";
+import RectangleSpinner from "../Loader/RectangleSpinner";
 
 const User = () => {
-  const { user } = useUser();
-  return <div>{user}</div>;
+  const { isLoading, error, data } = useQuery("userData", getUserDetails);
+  if (isLoading) return <RectangleSpinner />;
+  if (error) return <div>Login</div>;
+  return (
+    <div>
+      <HiUserCircle className="text-3xl font-semibold" />
+      {console.log(data)}
+    </div>
+  );
 };
 
 export default User;
