@@ -1,9 +1,12 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
+
 import { CgMenu } from "react-icons/cg";
 import Logo from "../Logo/Logo";
 import User from "../User/User";
 import useNavBar from "./useNavBar";
 import SideMenu from "../SideMenu/SideMenu";
+
 const NavBar = () => {
   const { isSideMenuOn, onHamburgerClick } = useNavBar();
   return (
@@ -20,9 +23,8 @@ const NavBar = () => {
           <User />
         </div>
       </div>
-      {isSideMenuOn && (
-        <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
-      )}
+
+      <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
     </>
   );
 };

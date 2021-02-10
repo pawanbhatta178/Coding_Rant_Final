@@ -1,0 +1,17 @@
+.side-menu-enter {
+  transform: translateX(-150%);
+}
+
+.side-menu-enter-active {
+  transform: translateX(0%);
+  transition: all ease-out 1s;
+}
+
+.side-menu-exit {
+  transform: translateX(0px);
+}
+
+.side-menu-exit-active {
+  transform: translateX(-150%);
+  transition: all ease-out 1s;
+}
