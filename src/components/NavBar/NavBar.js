@@ -1,5 +1,4 @@
 import React from "react";
-import { CSSTransition } from "react-transition-group";
 
 import { CgMenu } from "react-icons/cg";
 import Logo from "../Logo/Logo";
@@ -23,7 +22,6 @@ const NavBar = () => {
           <User />
         </div>
       </div>
-
       <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
     </>
   );

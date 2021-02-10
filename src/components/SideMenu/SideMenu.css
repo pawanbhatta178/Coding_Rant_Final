@@ -4,7 +4,7 @@
 
 .side-menu-enter-active {
   transform: translateX(0%);
-  transition: all ease-out 1s;
+  transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
 }
 
 .side-menu-exit {
@@ -13,5 +13,5 @@
 
 .side-menu-exit-active {
   transform: translateX(-150%);
-  transition: all ease-out 1s;
+  transition: all cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
 }

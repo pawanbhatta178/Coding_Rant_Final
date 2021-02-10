@@ -7,12 +7,7 @@ import { CgClose } from "react-icons/cg";
 const SideMenu = ({ show, onClose }) => {
   useDisableBodyScroll(show);
   return (
-    <CSSTransition
-      in={show}
-      timeout={1000}
-      classNames="side-menu"
-      unmountOnExit
-    >
+    <CSSTransition in={show} timeout={400} classNames="side-menu" unmountOnExit>
       <div className="absolute top-0 shadow-lg">
         <div className=" w-64 bg-primary overflow-y-hidden h-screen z-40 px-6 py-4">
           <CgClose
