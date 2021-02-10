@@ -21,3 +21,7 @@
 .text-accent {
   @apply text-purple-900 dark:text-purple-200;
 }
+
+.hover-transition {
+  @apply transition duration-300 ease-out hover:bg-gray-200 dark:hover:bg-gray-800;
+}
