@@ -10,7 +10,7 @@ const NavBar = () => {
   const { isSideMenuOn, onHamburgerClick } = useNavBar();
   return (
     <>
-      <div className="sticky top-0  px-4 sm:px-6 md:px-8 bg-primary">
+      <div className="sticky top-0  px-4 sm:px-6 md:px-8 bg-primary ">
         <div className="flex justify-between items-center h-16">
           <div className="md:hidden hover-transition rounded-full p-1">
             <CgMenu

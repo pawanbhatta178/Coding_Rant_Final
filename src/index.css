@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-primary {
-  @apply bg-gray-100 dark:bg-gray-900;
+  @apply bg-white dark:bg-gray-900;
 }
 
 .bg-accent {
