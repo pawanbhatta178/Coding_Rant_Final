@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import "./SideMenu.css";
 import { useDisableBodyScroll } from "./useDisableBodyScroll";
 import { CgClose } from "react-icons/cg";
+import Overlay from "../Overlay/Overlay";
 
 const SideMenu = ({ show, onClose }) => {
   useDisableBodyScroll(show);
@@ -27,12 +28,7 @@ const SideMenu = ({ show, onClose }) => {
           </div>
         </div>
       </CSSTransition>
-      <CSSTransition in={show} timeout={400} classNames="overlay" unmountOnExit>
-        <div
-          className="absolute top-0 h-screen w-screen z-10 bg-overlay"
-          onClick={onClose}
-        ></div>
-      </CSSTransition>
+      <Overlay show={show} onClick={onClose} />
     </>
   );
 };

@@ -1,0 +1,15 @@
+import React from "react";
+import { CSSTransition } from "react-transition-group";
+
+const Overlay = ({ show, onClick }) => {
+  return (
+    <CSSTransition in={show} timeout={400} classNames="overlay" unmountOnExit>
+      <div
+        className="absolute top-0 h-screen w-screen z-10 bg-overlay"
+        onClick={onClick}
+      ></div>
+    </CSSTransition>
+  );
+};
+
+export default Overlay;
