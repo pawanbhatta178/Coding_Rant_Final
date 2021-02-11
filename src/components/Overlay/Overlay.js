@@ -1,5 +1,6 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
+import "./Overlay.css";
 
 const Overlay = ({ show, onClick }) => {
   return (

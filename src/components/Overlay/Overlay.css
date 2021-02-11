@@ -1,0 +1,17 @@
+.overlay-enter {
+  opacity: 0;
+}
+
+.overlay-enter-active {
+  opacity: 0.5;
+  transition: opacity cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
+}
+
+.overlay-exit {
+  opacity: 0.5;
+}
+
+.overlay-exit-active {
+  opacity: 0;
+  transition: opacity cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
+}
