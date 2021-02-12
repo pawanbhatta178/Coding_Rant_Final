@@ -1,13 +1,18 @@
-import React from "react";
-
 import { CgMenu } from "react-icons/cg";
 import Logo from "../Logo/Logo";
 import User from "../User/User";
 import useNavBar from "./useNavBar";
 import SideMenu from "../SideMenu/SideMenu";
-
+import Login from "../Login/Login";
 const NavBar = () => {
-  const { isSideMenuOn, onHamburgerClick } = useNavBar();
+  const {
+    user,
+    isSideMenuOn,
+    isLoginOn,
+    onHamburgerClick,
+    onLoginClick,
+  } = useNavBar();
+
   return (
     <>
       <div className="sticky top-0  px-4 sm:px-6 md:px-8 bg-primary ">
@@ -19,10 +24,17 @@ const NavBar = () => {
             />
           </div>
           <Logo />
-          <User />
+          {user?.token ? (
+            <User />
+          ) : (
+            <button className="" onClick={onLoginClick}>
+              Login
+            </button>
+          )}
         </div>
       </div>
       <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
+      <Login show={isLoginOn} onClose={onLoginClick} />
     </>
   );
 };

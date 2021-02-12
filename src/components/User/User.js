@@ -7,7 +7,7 @@ import RectangleSpinner from "../Loader/RectangleSpinner";
 const User = () => {
   const { isLoading, error, data } = useQuery("userData", getUserDetails);
   if (isLoading) return <RectangleSpinner />;
-  if (error) return <div>Login</div>;
+  if (error) return null;
   return (
     <div>
       <HiUserCircle className="text-3xl font-semibold" />

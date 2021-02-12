@@ -1,7 +1,7 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
 import "./SideMenu.css";
-import { useDisableBodyScroll } from "./useDisableBodyScroll";
+import { useDisableBodyScroll } from "../common/useDisableBodyScroll";
 import { CgClose } from "react-icons/cg";
 import Overlay from "../Overlay/Overlay";
 

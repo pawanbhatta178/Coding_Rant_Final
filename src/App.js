@@ -7,6 +7,7 @@ import useAuthHeader from "./helper/auth/useAuthHeader";
 import useRefetchToken from "./helper/auth/useRefetchToken";
 import useAuthToken from "./helper/auth/useAuthToken";
 import userReducer from "./reducers/userReducer";
+import { UserContext } from "./UserContext";
 
 const ACCESS_KEY_TIMEOUT = 10000;
 
@@ -31,19 +32,21 @@ function App() {
   }, [newToken]);
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/workspace">
-          <WorkSpace />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Switch>
-    </Router>
+    <UserContext.Provider value={{ user: userState, userDispatch }}>
+      <Router>
+        <Switch>
+          <Route path="/workspace">
+            <WorkSpace />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

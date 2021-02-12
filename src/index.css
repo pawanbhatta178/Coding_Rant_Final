@@ -6,6 +6,10 @@
   @apply bg-white dark:bg-gray-900;
 }
 
+.bg-secondary {
+  @apply bg-gray-200 dark:bg-gray-700;
+}
+
 .bg-accent {
   @apply bg-purple-800 dark:bg-purple-500;
 }
