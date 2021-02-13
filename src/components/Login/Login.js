@@ -9,10 +9,12 @@ const Login = ({ show, onClose }) => {
   return (
     !user?.token && (
       <Modal show={show} onClose={onClose}>
-        <div className="flex flex-col  ">
+        <div className="flex flex-col pt-2 pb-6">
           <div className="font-semibold  text-2xl mx-auto">Login</div>
           {formError.general && (
-            <div className="text-xs text-red-600 mt-2">{formError.general}</div>
+            <div className="text-center text-xs text-red-600 mt-2">
+              {formError.general}
+            </div>
           )}
           <Input
             className="bg-secondary"

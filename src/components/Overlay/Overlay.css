@@ -3,12 +3,12 @@
 }
 
 .overlay-enter-active {
-  opacity: 0.5;
+  opacity: 0.8;
   transition: opacity cubic-bezier(0.785, 0.135, 0.15, 0.86) 400ms;
 }
 
 .overlay-exit {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .overlay-exit-active {
