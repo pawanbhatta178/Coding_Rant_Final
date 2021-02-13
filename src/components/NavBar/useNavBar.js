@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../UserContext";
 
 const useNavBar = () => {
   const [isSideMenuOn, setIsSideMenu] = useState(false);
   const [isLoginOn, setIsLoginOn] = useState(false);
+  const [isUserMenuOn, setIsUserMenuOn] = useState(false);
 
   const { user } = useContext(UserContext);
 
@@ -15,7 +16,20 @@ const useNavBar = () => {
     setIsLoginOn(!isLoginOn);
   };
 
-  return { isSideMenuOn, isLoginOn, onHamburgerClick, onLoginClick, user };
+  const onUserIconClick = () => {
+    console.log("Clicked");
+    setIsUserMenuOn(!isUserMenuOn);
+  };
+
+  return {
+    isSideMenuOn,
+    isLoginOn,
+    isUserMenuOn,
+    onUserIconClick,
+    onHamburgerClick,
+    onLoginClick,
+    user,
+  };
 };
 
 export default useNavBar;

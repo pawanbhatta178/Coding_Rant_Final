@@ -1,6 +1,6 @@
 import { CgMenu } from "react-icons/cg";
 import Logo from "../Logo/Logo";
-import User from "../User/User";
+import UserIcon from "../User/UserIcon";
 import useNavBar from "./useNavBar";
 import SideMenu from "../SideMenu/SideMenu";
 import Login from "../Login/Login";
@@ -9,6 +9,8 @@ const NavBar = () => {
     user,
     isSideMenuOn,
     isLoginOn,
+    isUserMenuOn,
+    onUserIconClick,
     onHamburgerClick,
     onLoginClick,
   } = useNavBar();
@@ -25,7 +27,7 @@ const NavBar = () => {
           </div>
           <Logo />
           {user?.token ? (
-            <User />
+            <UserIcon onClick={onUserIconClick} showMenu={isUserMenuOn} />
           ) : (
             <button className="" onClick={onLoginClick}>
               Login
