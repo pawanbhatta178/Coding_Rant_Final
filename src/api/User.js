@@ -10,6 +10,24 @@ const logUserIn = async ({ username, password }) => {
   return data;
 };
 
+const emailExists = async (email) => {
+  const { data } = await axios.post(
+    `${LOGIN_SERVICE_URI}/exists`,
+    { email },
+    { withCredentials: true }
+  );
+  return data;
+};
+
+const usernameExists = async (username) => {
+  const { data } = await axios.post(
+    `${LOGIN_SERVICE_URI}/exists`,
+    { username },
+    { withCredentials: true }
+  );
+  return data;
+};
+
 const signUserUp = async ({
   username,
   email,
@@ -56,4 +74,12 @@ const logUserOut = async () => {
   );
   return data;
 };
-export { logUserIn, getAccessToken, getUserDetails, logUserOut, signUserUp };
+export {
+  logUserIn,
+  getAccessToken,
+  getUserDetails,
+  logUserOut,
+  signUserUp,
+  usernameExists,
+  emailExists,
+};

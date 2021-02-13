@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useMutation } from "react-query";
-import { signUserUp } from "../../api/User";
+import { signUserUp, usernameExists } from "../../api/User";
 import { UserContext } from "../../UserContext";
 import { validatePassword, validateEmail } from "./validations";
 
@@ -28,7 +28,9 @@ const useLogin = () => {
       }
       console.log(data);
     },
+
     onError: (err) => {
+      console.log(err);
       setFormError((currentError) => {
         return {
           ...currentError,
@@ -37,6 +39,38 @@ const useLogin = () => {
       });
     },
   });
+
+  const checkUsernameMutation = useMutation(usernameExists, {
+    onSuccess: (data) => {
+      if (!!data.exists) {
+        setFormError((currentError) => {
+          return {
+            ...currentError,
+            username: "Username Already Taken!",
+          };
+        });
+      } else {
+        setFormError((currentError) => {
+          return {
+            ...currentError,
+            username: "",
+          };
+        });
+      }
+    },
+
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  useEffect(() => {
+    if (!formState.username) {
+      return;
+    }
+    checkUsernameMutation.mutate(formState.username);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formState.username]);
 
   const onFormSubmit = () => {
     if (
@@ -155,7 +189,13 @@ const useLogin = () => {
     });
   };
 
-  return { user, formState, onFormChange, onFormSubmit, formError };
+  return {
+    user,
+    formState,
+    onFormChange,
+    onFormSubmit,
+    formError,
+  };
 };
 
 export default useLogin;
