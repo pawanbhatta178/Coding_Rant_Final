@@ -11,7 +11,10 @@ const UserIcon = ({ onClick, showMenu }) => {
   return (
     <div className="relative">
       <div className="hover-transition rounded-full p-1">
-        <HiUserCircle onClick={onClick} className="text-3xl font-semibold" />
+        <HiUserCircle
+          onClick={onClick}
+          className="text-3xl font-semibold cursor-pointer"
+        />
         {console.log(data)}
       </div>
       <UserMenu show={showMenu} closeHandle={onClick} />

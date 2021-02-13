@@ -35,5 +35,9 @@
 }
 
 .bg-overlay {
-  @apply bg-gray-800 opacity-50;
+  @apply bg-gray-900 opacity-80;
+}
+
+.border-accent {
+  @apply border-purple-600;
 }
