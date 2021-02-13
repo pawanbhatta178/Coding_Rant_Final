@@ -5,6 +5,7 @@ const useNavBar = () => {
   const [isSideMenuOn, setIsSideMenu] = useState(false);
   const [isLoginOn, setIsLoginOn] = useState(false);
   const [isUserMenuOn, setIsUserMenuOn] = useState(false);
+  const [isSignUpOn, setIsSignUpOn] = useState(false);
 
   const { user } = useContext(UserContext);
 
@@ -12,22 +13,38 @@ const useNavBar = () => {
     setIsSideMenu(!isSideMenuOn);
   };
 
-  const onLoginClick = () => {
-    setIsLoginOn(!isLoginOn);
-  };
-
   const onUserIconClick = () => {
     console.log("Clicked");
     setIsUserMenuOn(!isUserMenuOn);
+  };
+
+  const onLoginClick = () => {
+    setIsLoginOn((currentState) => {
+      if (!currentState) {
+        setIsSignUpOn(false);
+      }
+      return !currentState;
+    });
+  };
+
+  const onSignUpToggle = () => {
+    setIsSignUpOn((currentState) => {
+      if (!currentState) {
+        setIsLoginOn(false);
+      }
+      return !currentState;
+    });
   };
 
   return {
     isSideMenuOn,
     isLoginOn,
     isUserMenuOn,
+    isSignUpOn,
     onUserIconClick,
     onHamburgerClick,
     onLoginClick,
+    onSignUpToggle,
     user,
   };
 };

@@ -4,12 +4,15 @@ import UserIcon from "../User/UserIcon";
 import useNavBar from "./useNavBar";
 import SideMenu from "../SideMenu/SideMenu";
 import Login from "../Login/Login";
+import SignUp from "../SignUp/SignUp";
 const NavBar = () => {
   const {
     user,
     isSideMenuOn,
     isLoginOn,
+    isSignUpOn,
     isUserMenuOn,
+    onSignUpToggle,
     onUserIconClick,
     onHamburgerClick,
     onLoginClick,
@@ -36,7 +39,16 @@ const NavBar = () => {
         </div>
       </div>
       <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
-      <Login show={isLoginOn} onClose={onLoginClick} />
+      <Login
+        show={isLoginOn}
+        onClose={onLoginClick}
+        onSignUpClick={onSignUpToggle}
+      />
+      <SignUp
+        show={isSignUpOn}
+        onClose={onSignUpToggle}
+        onLoginClick={onLoginClick}
+      />
     </>
   );
 };

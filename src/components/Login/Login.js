@@ -4,7 +4,7 @@ import useLogin from "./useLogin";
 import Input from "../Form/Input";
 import PrimaryButton from "../Form/PrimaryButton";
 
-const Login = ({ show, onClose }) => {
+const Login = ({ show, onClose, onSignUpClick }) => {
   const { user, formState, formError, onFormChange, onFormSubmit } = useLogin();
   return (
     !user?.token && (
@@ -32,6 +32,12 @@ const Login = ({ show, onClose }) => {
             onChange={onFormChange}
           ></Input>
           <PrimaryButton onClick={onFormSubmit}>Login</PrimaryButton>
+          <div className="flex mt-4 justify-between text-xs">
+            <button>Forgot Password? </button>
+            <button size="xs" type="basicPurple" onClick={onSignUpClick}>
+              Sign Up
+            </button>
+          </div>
         </div>
       </Modal>
     )
