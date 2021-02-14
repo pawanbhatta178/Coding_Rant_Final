@@ -1,0 +1,9 @@
+.code-editor {
+  height: 100%;
+  flex: 2 0 25%;
+}
+
+.question {
+  height: 100%;
+  flex: 1 0 25%;
+}
