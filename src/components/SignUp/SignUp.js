@@ -64,8 +64,8 @@ const SignUp = ({ show, onClose, onLoginClick }) => {
           {/* <RegisterErrorText msg={emailError} /> */}
 
           <PrimaryButton onClick={onFormSubmit}>Register Now</PrimaryButton>
-          <div className="flex justify-between text-xs mt-4">
-            <div className="opacity-60">Already Have an Account? </div>
+          <div className="flex justify-center text-xs mt-4">
+            <div className="opacity-60 px-1">Already Have an Account? </div>
             <button onClick={onLoginClick}>Log In</button>
           </div>
         </div>

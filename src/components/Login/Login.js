@@ -17,15 +17,13 @@ const Login = ({ show, onClose, onSignUpClick }) => {
             </div>
           )}
           <Input
-            className="bg-secondary"
-            placeholder="login"
+            placeholder="Username or Email"
             name="username"
             value={formState.username}
             onChange={onFormChange}
           ></Input>
           <Input
-            className="bg-secondary"
-            placeholder="password"
+            placeholder="Password"
             name="password"
             type="password"
             value={formState.password}

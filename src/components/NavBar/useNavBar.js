@@ -14,7 +14,6 @@ const useNavBar = () => {
   };
 
   const onUserIconClick = () => {
-    console.log("Clicked");
     setIsUserMenuOn(!isUserMenuOn);
   };
 
