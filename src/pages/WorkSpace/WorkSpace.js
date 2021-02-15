@@ -10,8 +10,8 @@ const WorkSpace = () => {
         defaultSize={parseInt(localStorage.getItem("splitPos"), 10)}
         onChange={(size) => localStorage.setItem("splitPos", size)}
       >
-        <div className=" h-full border">HEy</div>
-        <div className=" h-full border">Hey</div>
+        <div className="h-full border">HEy</div>
+        <div className="h-full border">Hey</div>
       </SplitPane>
     </div>
   );
