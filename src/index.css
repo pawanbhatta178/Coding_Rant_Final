@@ -34,6 +34,10 @@
   @apply transition duration-300 ease-out hover:bg-gray-200 dark:hover:bg-gray-800;
 }
 
+.select-transition {
+  @apply transition duration-300 ease-out bg-gray-200 dark:bg-gray-800;
+}
+
 .bg-overlay {
   @apply bg-gray-900 opacity-80;
 }

@@ -9,7 +9,11 @@ const UserIcon = ({ onClick, showMenu }) => {
   if (error) return null;
   return (
     <div className="">
-      <div className="hover-transition rounded-full p-1">
+      <div
+        className={`${
+          showMenu ? "select-transition" : "hover-transition"
+        } rounded-full p-1`}
+      >
         <HiUserCircle
           onClick={onClick}
           className="text-3xl font-semibold cursor-pointer"
