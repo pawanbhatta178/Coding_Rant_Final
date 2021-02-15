@@ -1,14 +1,18 @@
 import React from "react";
 import "./WorkSpace.css";
-import Split from "react-split";
-
+import SplitPane from "react-split-pane";
 const WorkSpace = () => {
   return (
-    <div className="w-screen h-screen border border-purple-500 justify-center items-center">
-      <Split className="w-full h-full flex" sizes={[25, 75]}>
-        <div className="code-editor border ">Code-editor</div>
-        <div className="question border">Question</div>
-      </Split>
+    <div className="w-screen h-screen flex justify-center items-center">
+      <SplitPane
+        split="vertical"
+        minSize={50}
+        defaultSize={parseInt(localStorage.getItem("splitPos"), 10)}
+        onChange={(size) => localStorage.setItem("splitPos", size)}
+      >
+        <div className=" h-full border">HEy</div>
+        <div className=" h-full border">Hey</div>
+      </SplitPane>
     </div>
   );
 };
