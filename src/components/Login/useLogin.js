@@ -2,10 +2,11 @@ import { useState, useContext } from "react";
 import { useMutation } from "react-query";
 import { logUserIn } from "../../api/User";
 import { UserContext } from "../../UserContext";
+import { useHistory } from "react-router-dom";
 
 const useLogin = () => {
   const { user, userDispatch } = useContext(UserContext);
-
+  const history = useHistory();
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -18,6 +19,7 @@ const useLogin = () => {
   const mutation = useMutation(logUserIn, {
     onSuccess: (data) => {
       userDispatch({ type: "SET_TOKEN", payload: data?.token });
+      history.push("/workspace");
     },
     onError: (err) => {
       setFormError((currentError) => {

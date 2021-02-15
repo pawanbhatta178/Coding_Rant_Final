@@ -1,7 +1,6 @@
 import React from "react";
 import { HiUserCircle } from "react-icons/hi";
 import RectangleSpinner from "../Loader/RectangleSpinner";
-import UserMenu from "./UserMenu";
 import useUser from "./useUser";
 
 const UserIcon = ({ onClick, showMenu }) => {
@@ -9,7 +8,7 @@ const UserIcon = ({ onClick, showMenu }) => {
   if (isLoading) return <RectangleSpinner />;
   if (error) return null;
   return (
-    <div className="relative">
+    <div className="">
       <div className="hover-transition rounded-full p-1">
         <HiUserCircle
           onClick={onClick}
@@ -17,7 +16,6 @@ const UserIcon = ({ onClick, showMenu }) => {
         />
         {console.log(data)}
       </div>
-      <UserMenu show={showMenu} closeHandle={onClick} />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import useNavBar from "./useNavBar";
 import SideMenu from "../SideMenu/SideMenu";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
+import UserMenu from "../User/UserMenu";
 const NavBar = () => {
   const {
     user,
@@ -49,6 +50,7 @@ const NavBar = () => {
         onClose={onSignUpToggle}
         onLoginClick={onLoginClick}
       />
+      <UserMenu show={isUserMenuOn} closeHandle={onUserIconClick} />
     </>
   );
 };
