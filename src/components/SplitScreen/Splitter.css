@@ -8,10 +8,6 @@
   -webkit-background-clip: padding;
   background-clip: padding-box;
 }
-.Pane2 {
-  background: purple;
-  z-index: 0;
-}
 
 .Resizer:hover {
   -webkit-transition: all 0.7s ease;
