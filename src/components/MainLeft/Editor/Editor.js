@@ -5,7 +5,7 @@ import useEditor from "./useEditor";
 const Editor = () => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { activeLanguage, code, updateCode, changeLanguage } = useEditor();
+  const { activeLanguage, code, updateCode } = useEditor();
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);

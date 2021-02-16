@@ -5,8 +5,8 @@ import { useDisableBodyScroll } from "../common/useDisableBodyScroll";
 import { CgClose } from "react-icons/cg";
 import Overlay from "../Overlay/Overlay";
 
-const SideMenu = ({ show, onClose }) => {
-  useDisableBodyScroll(show);
+const SideMenu = ({ show, onClose, disablePreventBodyScroll }) => {
+  useDisableBodyScroll(disablePreventBodyScroll ? false : true);
   return (
     <>
       <CSSTransition
@@ -15,7 +15,7 @@ const SideMenu = ({ show, onClose }) => {
         classNames="side-menu"
         unmountOnExit
       >
-        <div className="absolute top-0 shadow-lg z-20">
+        <div className="absolute top-0 left-0 shadow-lg z-20">
           <div className=" w-64 bg-primary overflow-y-hidden h-screen  px-6 py-4">
             <div className="flex">
               <div className="hover-transition rounded-full p-1">
