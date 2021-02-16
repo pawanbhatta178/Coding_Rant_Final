@@ -7,9 +7,11 @@ import Editor from "../../components/MainLeft/Editor/Editor";
 import WorkSpaceWrapper from "../../components/Wrapper/WorkSpaceWrapper";
 import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
+import useScrollToTop from "../../components/common/useScrollToTop";
 
 const WorkSpace = () => {
-  useDisableBodyScroll(true, true);
+  useScrollToTop();
+  useDisableBodyScroll(true);
   return (
     <WorkSpaceWrapper>
       <NavBarWorkSpace />
