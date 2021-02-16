@@ -9,7 +9,7 @@ import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 
 const WorkSpace = () => {
-  useDisableBodyScroll(true);
+  useDisableBodyScroll(true, true);
   return (
     <WorkSpaceWrapper>
       <NavBarWorkSpace />
