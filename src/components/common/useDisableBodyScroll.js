@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 const useDisableBodyScroll = (open) => {
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+  useLayoutEffect(() => {
+    // Get original body overflow
+    if (!open) {
+      return;
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    // Prevent scrolling on mount
+    document.body.style.overflow = "hidden";
+    // Re-enable scrolling when component unmounts
+    return () => (document.body.style.overflow = originalStyle);
   }, [open]);
 };
 export { useDisableBodyScroll };

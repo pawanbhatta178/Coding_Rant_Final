@@ -5,15 +5,15 @@ import LeftPane from "../../components/SplitScreen/LeftPane";
 import RightPane from "../../components/SplitScreen/RightPane";
 import Editor from "../../components/MainLeft/Editor/Editor";
 import WorkSpaceWrapper from "../../components/Wrapper/WorkSpaceWrapper";
-import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
+import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 
 const WorkSpace = () => {
-  useDisableBodyScroll(true); //Disabled scrolling because react-pane goes boyond its parent height
+  useDisableBodyScroll(true);
   return (
     <WorkSpaceWrapper>
       <NavBarWorkSpace />
-      <div className="w-full h-full overflow-hidden">
+      <div className="w-full h-full">
         <Splitter>
           <LeftPane>
             <div className="flex flex-col h-full">

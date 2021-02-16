@@ -5,7 +5,8 @@ import useNavBar from "./useNavBar";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
 import UserMenu from "../User/UserMenu";
-import SideMenu from "../SideMenu/SideMenu";
+import SideMenuWorkSpace from "../SideMenu/SideMenuWorkSpace";
+
 const NavBarWorkSpace = () => {
   const {
     user,
@@ -38,7 +39,7 @@ const NavBarWorkSpace = () => {
         )}
       </div>
 
-      <SideMenu show={isSideMenuOn} onClose={onHamburgerClick} />
+      <SideMenuWorkSpace show={isSideMenuOn} onClose={onHamburgerClick} />
       <Login
         show={isLoginOn}
         onClose={onLoginClick}
