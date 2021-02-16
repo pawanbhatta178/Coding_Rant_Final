@@ -1,6 +1,7 @@
 .Resizer {
   z-index: 0;
   opacity: 0.4;
+  border-radius: 0.2rem;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
