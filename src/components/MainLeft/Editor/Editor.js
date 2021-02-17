@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import useEditor from "./useEditor";
+import EditorNav from "../EditorNav/EditorNav";
 
 const Editor = () => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { activeLanguage, code, updateCode } = useEditor();
+  const { activeLanguage, code, updateCode, theme, toggleTheme } = useEditor();
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
@@ -13,13 +14,16 @@ const Editor = () => {
   }
 
   return (
-    <MonacoEditor
-      height="83vh"
-      language={activeLanguage}
-      value={code}
-      editorDidMount={handleEditorDidMount}
-      onChange={updateCode}
-    />
+    <>
+      <EditorNav toggleTheme={toggleTheme} theme={theme} />
+      <MonacoEditor
+        language={activeLanguage}
+        value={code}
+        editorDidMount={handleEditorDidMount}
+        onChange={updateCode}
+        theme={theme}
+      />
+    </>
   );
 };
 export default Editor;
