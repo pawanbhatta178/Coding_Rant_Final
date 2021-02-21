@@ -6,7 +6,7 @@ const useEditor = () => {
   const [theme, setTheme] = useLocalStorage("theme", "vs-dark");
   const [activeLanguage, setActiveLanguage] = useLocalStorage(
     "activeLanguage",
-    "javascript"
+    "typescript"
   );
 
   const [code, setCode] = useLocalStorage(
@@ -18,7 +18,7 @@ const useEditor = () => {
     setTheme(theme === "light" ? "vs-dark" : "light");
   };
 
-  const changeLanguage = (langId) => {
+  const changeActiveLanguage = (langId) => {
     setActiveLanguage((currentLang) => {
       return langId;
     });
@@ -31,7 +31,7 @@ const useEditor = () => {
 
   return {
     activeLanguage,
-    changeLanguage,
+    changeActiveLanguage,
     code,
     updateCode,
     theme,

@@ -6,7 +6,14 @@ import EditorNav from "../EditorNav/EditorNav";
 const Editor = () => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { activeLanguage, code, updateCode, theme, toggleTheme } = useEditor();
+  const {
+    activeLanguage,
+    changeActiveLanguage,
+    code,
+    updateCode,
+    theme,
+    toggleTheme,
+  } = useEditor();
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
@@ -15,7 +22,12 @@ const Editor = () => {
 
   return (
     <>
-      <EditorNav toggleTheme={toggleTheme} theme={theme} />
+      <EditorNav
+        toggleTheme={toggleTheme}
+        theme={theme}
+        activeLanguage={activeLanguage}
+        changeActiveLanguage={changeActiveLanguage}
+      />
       <MonacoEditor
         language={activeLanguage}
         value={code}
