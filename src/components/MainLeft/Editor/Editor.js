@@ -4,7 +4,7 @@ import useEditor from "./useEditor";
 import EditorNav from "../EditorNav/EditorNav";
 import EditorAction from "../EditorAction/EditorAction";
 
-const Editor = () => {
+const Editor = ({ isCodeSubmitting, onCodeSubmit }) => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
   const {
@@ -37,7 +37,10 @@ const Editor = () => {
         onChange={updateCode}
         theme={theme}
       />
-      <EditorAction />
+      <EditorAction
+        onCodeSubmit={onCodeSubmit}
+        isCodeSubmitting={isCodeSubmitting}
+      />
     </>
   );
 };

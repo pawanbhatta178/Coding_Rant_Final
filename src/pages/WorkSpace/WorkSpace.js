@@ -1,4 +1,3 @@
-import React from "react";
 import "./WorkSpace.css";
 import Splitter from "../../components/SplitScreen/Splitter";
 import LeftPane from "../../components/SplitScreen/LeftPane";
@@ -6,12 +5,10 @@ import RightPane from "../../components/SplitScreen/RightPane";
 import Editor from "../../components/MainLeft/Editor/Editor";
 import WorkSpaceWrapper from "../../components/Wrapper/WorkSpaceWrapper";
 import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
-import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
-import useScrollToTop from "../../components/common/useScrollToTop";
+import useWorkspace from "./useWorkspace";
 
 const WorkSpace = () => {
-  useScrollToTop();
-  useDisableBodyScroll(true);
+  const { isCodeSubmitting, onCodeSubmit } = useWorkspace();
   return (
     <WorkSpaceWrapper>
       <NavBarWorkSpace />
@@ -19,7 +16,10 @@ const WorkSpace = () => {
         <Splitter>
           <LeftPane>
             <div className="flex flex-col h-full">
-              <Editor />
+              <Editor
+                isCodeSubmitting={isCodeSubmitting}
+                onCodeSubmit={onCodeSubmit}
+              />
             </div>
           </LeftPane>
           <RightPane>

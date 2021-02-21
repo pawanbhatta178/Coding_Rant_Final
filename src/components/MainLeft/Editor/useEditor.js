@@ -1,5 +1,6 @@
-import useLocalStorage from "../../common/useLocalStorage";
+import { useState } from "react";
 
+import useLocalStorage from "../../common/useLocalStorage";
 const ACTIVE_QUESTION_ID = "1";
 
 const useEditor = () => {

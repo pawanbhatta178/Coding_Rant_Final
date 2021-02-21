@@ -20,14 +20,14 @@ const EditorNav = ({
       >
         <div className="w-full h-full flex items-center ">
           {theme === "vs-dark" ? (
-            <RiMoonFill className="text-xl " />
+            <RiMoonFill className="text-lg " />
           ) : (
-            <RiSunFill className="text-xl " />
+            <RiSunFill className="text-lg " />
           )}
         </div>
       </div>
       <select
-        className="shadow-lg border border-accent rounded-lg cursor-pointer focus:outline-none bg-secondary "
+        className="shadow-lg border text-xs border-accent rounded-lg cursor-pointer focus:outline-none bg-secondary "
         id="language"
         onChange={handleSelectChange}
       >
