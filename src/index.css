@@ -43,9 +43,5 @@
 }
 
 .border-accent {
-  @apply border-purple-600;
-}
-
-select {
-  @apply bg-secondary;
+  @apply border-purple-400;
 }
