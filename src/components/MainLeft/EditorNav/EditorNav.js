@@ -1,7 +1,7 @@
 import React from "react";
 import useEditorNav from "./useEditorNav";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
-import "./EditorNav.css";
+
 const EditorNav = ({
   theme,
   toggleTheme,

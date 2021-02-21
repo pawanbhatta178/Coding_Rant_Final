@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import useEditor from "./useEditor";
 import EditorNav from "../EditorNav/EditorNav";
+import EditorAction from "../EditorAction/EditorAction";
 
 const Editor = () => {
   const editorRef = useRef();
@@ -31,10 +32,12 @@ const Editor = () => {
       <MonacoEditor
         language={activeLanguage}
         value={code}
+        height="83vh"
         editorDidMount={handleEditorDidMount}
         onChange={updateCode}
         theme={theme}
       />
+      <EditorAction />
     </>
   );
 };
