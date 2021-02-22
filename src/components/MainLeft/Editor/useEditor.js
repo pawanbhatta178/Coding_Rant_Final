@@ -1,40 +1,37 @@
-import { useState } from "react";
-
 import useLocalStorage from "../../common/useLocalStorage";
-const ACTIVE_QUESTION_ID = "1";
 
-const useEditor = () => {
+const useEditor = (activeQuestionId) => {
   const [theme, setTheme] = useLocalStorage("theme", "vs-dark");
-  const [activeLanguage, setActiveLanguage] = useLocalStorage(
-    "activeLanguage",
-    "typescript"
-  );
-
-  const [code, setCode] = useLocalStorage(
-    `Code:${ACTIVE_QUESTION_ID}:${activeLanguage}`,
-    ""
-  );
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "vs-dark" : "light");
   };
 
-  const changeActiveLanguage = (langId) => {
-    setActiveLanguage((currentLang) => {
-      return langId;
-    });
-  };
+  // const [activeLanguage, setActiveLanguage] = useLocalStorage(
+  //   "activeLanguage",
+  //   "typescript"
+  // );
 
-  const updateCode = (newCode, _) => {
-    console.log(newCode);
-    setCode(newCode);
-  };
+  // const [code, setCode] = useLocalStorage(
+  //   `Code:${activeQuestionId}:${activeLanguage}`,
+  //   ""
+  // );
+  // const updateCode = (newCode, _) => {
+  //   console.log(newCode);
+  //   setCode(newCode);
+  // };
+
+  // const changeActiveLanguage = (langId) => {
+  //   setActiveLanguage((currentLang) => {
+  //     return langId;
+  //   });
+  // };
 
   return {
-    activeLanguage,
-    changeActiveLanguage,
-    code,
-    updateCode,
+    // activeLanguage,
+    // changeActiveLanguage,
+    // code,
+    // updateCode,
     theme,
     toggleTheme,
   };

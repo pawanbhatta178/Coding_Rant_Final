@@ -8,7 +8,16 @@ import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
 import useWorkspace from "./useWorkspace";
 
 const WorkSpace = () => {
-  const { isCodeSubmitting, onCodeSubmit } = useWorkspace();
+  const {
+    isCodeSubmitting,
+    onCodeSubmit,
+    activeQuestionId,
+    changeActiveQuestionId,
+    code,
+    changeCode,
+    activeLanguage,
+    changeActiveLanguage,
+  } = useWorkspace();
   return (
     <WorkSpaceWrapper>
       <NavBarWorkSpace />
@@ -19,6 +28,12 @@ const WorkSpace = () => {
               <Editor
                 isCodeSubmitting={isCodeSubmitting}
                 onCodeSubmit={onCodeSubmit}
+                activeQuestionId={activeQuestionId}
+                changeActiveQuestionId={changeActiveQuestionId}
+                activeLanguage={activeLanguage}
+                changeActiveLanguage={changeActiveLanguage}
+                code={code}
+                changeCode={changeCode}
               />
             </div>
           </LeftPane>

@@ -5,7 +5,7 @@ const RectangleSpinner = ({ text, border }) => {
   return (
     <div className=" ">
       <div
-        className={` rounded-full h-16 w-16 flex flex-col gap-y-2 justify-center items-center ${
+        className={` rounded-full p-2 flex flex-col gap-y-2 justify-center items-center ${
           border && "border p-1 border-purple-300  shadow-lg"
         }`}
       >

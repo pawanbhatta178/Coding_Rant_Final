@@ -4,17 +4,19 @@ import useEditor from "./useEditor";
 import EditorNav from "../EditorNav/EditorNav";
 import EditorAction from "../EditorAction/EditorAction";
 
-const Editor = ({ isCodeSubmitting, onCodeSubmit }) => {
+const Editor = ({
+  isCodeSubmitting,
+  onCodeSubmit,
+  activeQuestionId,
+  changeActiveQuestionId,
+  activeLanguage,
+  changeActiveLanguage,
+  code,
+  changeCode,
+}) => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const {
-    activeLanguage,
-    changeActiveLanguage,
-    code,
-    updateCode,
-    theme,
-    toggleTheme,
-  } = useEditor();
+  const { theme, toggleTheme } = useEditor(activeQuestionId);
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
@@ -34,7 +36,7 @@ const Editor = ({ isCodeSubmitting, onCodeSubmit }) => {
         value={code}
         height="83vh"
         editorDidMount={handleEditorDidMount}
-        onChange={updateCode}
+        onChange={changeCode}
         theme={theme}
       />
       <EditorAction
