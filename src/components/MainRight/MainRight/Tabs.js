@@ -6,8 +6,8 @@ const Tabs = () => {
   const { changeActiveTab, tabs } = useTabs();
   return (
     <div className="flex flex-col h-full">
-      <div className="flex flex-0 justify-start items-center h-11 text-sm ">
-        <div className="rounded-lg bg-secondary">
+      <div className="flex flex-0 justify-start items-center h-11 text-sm  ">
+        <div className="flex rounded-lg bg-secondary flex-nowrap">
           {tabs.map((tab) => (
             <TabHeader
               key={tab.id}

@@ -13,7 +13,7 @@ const EditorNav = ({
     changeActiveLanguage
   );
   return (
-    <div className="flex justify-end gap-x-4 py-2 h-11 text-sm">
+    <div className="flex-0 flex justify-end gap-x-4 py-2 h-11 text-sm">
       <div
         onClick={toggleTheme}
         className="px-2 bg-secondary shadow-lg  rounded-lg cursor-pointer"
