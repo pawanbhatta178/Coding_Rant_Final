@@ -24,7 +24,7 @@ const Editor = ({
   }
 
   return (
-    <>
+    <div className="flex flex-col h-full">
       <EditorNav
         toggleTheme={toggleTheme}
         theme={theme}
@@ -43,7 +43,7 @@ const Editor = ({
         onCodeSubmit={onCodeSubmit}
         isCodeSubmitting={isCodeSubmitting}
       />
-    </>
+    </div>
   );
 };
 export default Editor;

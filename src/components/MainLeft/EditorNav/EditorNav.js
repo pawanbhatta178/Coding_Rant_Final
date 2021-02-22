@@ -32,7 +32,11 @@ const EditorNav = ({
         onChange={handleSelectChange}
       >
         {languageOptions.map((option) => (
-          <option value={option.value} selected={option.selected}>
+          <option
+            key={option.value}
+            value={option.value}
+            selected={option.selected}
+          >
             {option.name}
           </option>
         ))}

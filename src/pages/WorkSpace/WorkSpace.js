@@ -6,6 +6,7 @@ import Editor from "../../components/MainLeft/Editor/Editor";
 import WorkSpaceWrapper from "../../components/Wrapper/WorkSpaceWrapper";
 import NavBarWorkSpace from "../../components/NavBar/NavBarWorkSpace";
 import useWorkspace from "./useWorkspace";
+import Tabs from "../../components/MainRight/MainRight/Tabs";
 
 const WorkSpace = () => {
   const {
@@ -24,21 +25,19 @@ const WorkSpace = () => {
       <div className="w-full h-full">
         <Splitter>
           <LeftPane>
-            <div className="flex flex-col h-full">
-              <Editor
-                isCodeSubmitting={isCodeSubmitting}
-                onCodeSubmit={onCodeSubmit}
-                activeQuestionId={activeQuestionId}
-                changeActiveQuestionId={changeActiveQuestionId}
-                activeLanguage={activeLanguage}
-                changeActiveLanguage={changeActiveLanguage}
-                code={code}
-                changeCode={changeCode}
-              />
-            </div>
+            <Editor
+              isCodeSubmitting={isCodeSubmitting}
+              onCodeSubmit={onCodeSubmit}
+              activeQuestionId={activeQuestionId}
+              changeActiveQuestionId={changeActiveQuestionId}
+              activeLanguage={activeLanguage}
+              changeActiveLanguage={changeActiveLanguage}
+              code={code}
+              changeCode={changeCode}
+            />
           </LeftPane>
           <RightPane>
-            <div className="flex flex-col h-full "></div>
+            <Tabs />
           </RightPane>
         </Splitter>
       </div>
