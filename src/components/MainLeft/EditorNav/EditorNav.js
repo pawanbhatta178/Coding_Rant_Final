@@ -13,21 +13,17 @@ const EditorNav = ({
     changeActiveLanguage
   );
   return (
-    <div className="flex justify-end gap-x-4 py-2 items-stretch h-11">
+    <div className="flex justify-end gap-x-4 py-2 h-11 text-sm">
       <div
         onClick={toggleTheme}
         className="px-2 bg-secondary shadow-lg border border-accent rounded-lg cursor-pointer"
       >
         <div className="w-full h-full flex items-center ">
-          {theme === "vs-dark" ? (
-            <RiMoonFill className="text-lg " />
-          ) : (
-            <RiSunFill className="text-lg " />
-          )}
+          {theme === "vs-dark" ? <RiMoonFill /> : <RiSunFill />}
         </div>
       </div>
       <select
-        className="shadow-lg border text-xs border-accent rounded-lg cursor-pointer focus:outline-none bg-secondary "
+        className="shadow-lg border font-thin border-accent rounded-lg cursor-pointer focus:outline-none bg-secondary "
         id="language"
         onChange={handleSelectChange}
       >

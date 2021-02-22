@@ -45,3 +45,7 @@
 .border-accent {
   @apply border-purple-400;
 }
+
+.button-base-style {
+  @apply rounded-sm hover:bg-opacity-90  focus:outline-none;
+}
