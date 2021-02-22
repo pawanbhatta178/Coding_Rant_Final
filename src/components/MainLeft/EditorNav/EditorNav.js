@@ -16,14 +16,14 @@ const EditorNav = ({
     <div className="flex justify-end gap-x-4 py-2 h-11 text-sm">
       <div
         onClick={toggleTheme}
-        className="px-2 bg-secondary shadow-lg border border-accent rounded-lg cursor-pointer"
+        className="px-2 bg-secondary shadow-lg  rounded-lg cursor-pointer"
       >
         <div className="w-full h-full flex items-center ">
           {theme === "vs-dark" ? <RiMoonFill /> : <RiSunFill />}
         </div>
       </div>
       <select
-        className="shadow-lg border font-thin border-accent rounded-lg cursor-pointer focus:outline-none bg-secondary "
+        className="shadow-lg  font-thin  rounded-lg cursor-pointer focus:outline-none bg-secondary "
         id="language"
         onChange={handleSelectChange}
       >

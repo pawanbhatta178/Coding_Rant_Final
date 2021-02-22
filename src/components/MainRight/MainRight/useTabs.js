@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useTabs = () => {
   const [tabs, setTabs] = useState([
     { id: "description", name: "Description", open: true },
     { id: "result", name: "Result", open: false },
-    { id: "ranking", name: "LeaderBoard", open: false },
+    { id: "leaderboard", name: "LeaderBoard", open: false },
   ]);
 
   const changeActiveTab = (e) => {
