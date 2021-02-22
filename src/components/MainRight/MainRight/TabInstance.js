@@ -13,9 +13,13 @@ const TabInstance = ({ tabs }) => {
     setComponentToRender(activeTab.id);
   }, [tabs]);
 
-  if (componentToRender === "description") return <Description />;
-  if (componentToRender === "result") return <Result />;
-  if (componentToRender === "leaderboard") return <LeaderBoard />;
+  return (
+    <>
+      <Description show={componentToRender === "description"} />
+      <LeaderBoard show={componentToRender === "leaderboard"} />
+      <Result show={componentToRender === "result"} />
+    </>
+  );
 };
 
 export default TabInstance;

@@ -1,6 +1,7 @@
 import React from "react";
 
-const LeaderBoard = () => {
+const LeaderBoard = ({ show }) => {
+  if (!show) return null;
   return <div>LeaderBoard</div>;
 };
 
