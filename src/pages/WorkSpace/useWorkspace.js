@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 import useScrollToTop from "../../components/common/useScrollToTop";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { compile } from "../../api/Compile";
 import useLocalStorage from "../../components/common/useLocalStorage";
+import { getAllSubmissions } from "../../api/Submission";
 
 const langId = {
   javascript: "js",
@@ -16,7 +17,7 @@ const useWorkspace = () => {
   useDisableBodyScroll(true);
   const [isCodeSubmitting, setCodeSubmitting] = useState(false);
   const [activeQuestionId, setActiveQuestionId] = useState("1");
-
+  const [latestSubmission, setLatestSubmission] = useState();
   const [activeLanguage, setActiveLanguage] = useLocalStorage(
     "activeLanguage",
     "javascript"
@@ -26,8 +27,13 @@ const useWorkspace = () => {
     `Code:${activeQuestionId}:${activeLanguage}`,
     ""
   );
+
+  const { data: submissions } = useQuery(
+    ["submissions", { activeQuestionId }],
+    () => getAllSubmissions({ questionId: activeQuestionId })
+  );
+
   const changeCode = (newCode, _) => {
-    console.log(newCode);
     setCode(newCode);
   };
 
@@ -39,7 +45,7 @@ const useWorkspace = () => {
 
   const mutation = useMutation(compile, {
     onSuccess: (data) => {
-      console.log(data);
+      setLatestSubmission(data);
       setCodeSubmitting(false);
     },
     onError: (err) => {
@@ -70,6 +76,8 @@ const useWorkspace = () => {
     changeCode,
     activeLanguage,
     changeActiveLanguage,
+    submissions,
+    latestSubmission,
   };
 };
 

@@ -20,7 +20,11 @@ const Tabs = ({ isCodeSubmitting, ...props }) => {
         </div>
       </div>
       <div className="flex-1  mb-8 overflow-y-scroll bg-secondary">
-        <TabInstance {...props} tabs={tabs} />
+        <TabInstance
+          {...props}
+          isCodeSubmitting={isCodeSubmitting}
+          tabs={tabs}
+        />
       </div>
     </div>
   );

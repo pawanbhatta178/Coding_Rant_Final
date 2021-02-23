@@ -18,6 +18,8 @@ const WorkSpace = () => {
     changeCode,
     activeLanguage,
     changeActiveLanguage,
+    submissions,
+    latestSubmission,
   } = useWorkspace();
   return (
     <WorkSpaceWrapper>
@@ -40,6 +42,8 @@ const WorkSpace = () => {
             <Tabs
               activeQuestionId={activeQuestionId}
               isCodeSubmitting={isCodeSubmitting}
+              submissions={submissions}
+              latestSubmission={latestSubmission}
             />
           </RightPane>
         </Splitter>

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 import Description from "../Description/Description";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
-import Result from "../Result/Result";
+import Result from "../Submission/Submission";
 
 const TabInstance = ({ tabs, ...props }) => {
   const [componentToRender, setComponentToRender] = useState("description");

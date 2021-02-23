@@ -6,7 +6,6 @@ const useDescription = ({ activeQuestionId, isCodeSubmitting }) => {
     ["question", activeQuestionId],
     () => getQuestion({ questionId: activeQuestionId })
   );
-  console.log(data, isLoading, error);
   return { data, isLoading, error };
 };
 
