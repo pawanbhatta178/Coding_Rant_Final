@@ -15,7 +15,7 @@ const Description = ({ show, activeQuestionId, isCodeSubmitting }) => {
   if (isLoading) return <RectangleSpinner />;
   return (
     <div className="mx-4 py-4">
-      <div className="sticky top-0 font-semibold text-2xl pt-2 pb-2 shadow-sm capitalize">
+      <div className="sticky top-0 bg-secondary font-semibold text-2xl pt-2 pb-2  shadow-sm capitalize">
         {data.id}. {data.title}
       </div>
       <div className="pt-4 font-light text-secondary">

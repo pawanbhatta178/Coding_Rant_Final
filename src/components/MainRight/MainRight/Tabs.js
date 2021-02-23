@@ -2,8 +2,8 @@ import React from "react";
 import TabHeader from "./TabHeader";
 import useTabs from "./useTabs";
 import TabInstance from "./TabInstance";
-const Tabs = ({ ...props }) => {
-  const { changeActiveTab, tabs } = useTabs();
+const Tabs = ({ isCodeSubmitting, ...props }) => {
+  const { changeActiveTab, tabs } = useTabs({ isCodeSubmitting });
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-0 justify-start items-center h-11 text-sm  ">

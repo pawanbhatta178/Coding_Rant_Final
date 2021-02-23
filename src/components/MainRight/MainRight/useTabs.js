@@ -1,11 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const useTabs = () => {
+const useTabs = ({ isCodeSubmitting }) => {
   const [tabs, setTabs] = useState([
     { id: "description", name: "Description", open: true },
     { id: "result", name: "Result", open: false },
     { id: "leaderboard", name: "LeaderBoard", open: false },
   ]);
+
+  useEffect(() => {
+    setTabs((currentTabs) => {
+      const newTabState = currentTabs.map((tab) => {
+        if (tab.id === "result") {
+          return {
+            ...tab,
+            open: true,
+          };
+        }
+        return { ...tab, open: false };
+      });
+      return newTabState;
+    });
+  }, [isCodeSubmitting]);
 
   const changeActiveTab = (e) => {
     const { value: tabId } = e.target;
