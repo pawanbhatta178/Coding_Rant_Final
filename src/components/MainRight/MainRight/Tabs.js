@@ -2,7 +2,7 @@ import React from "react";
 import TabHeader from "./TabHeader";
 import useTabs from "./useTabs";
 import TabInstance from "./TabInstance";
-const Tabs = () => {
+const Tabs = ({ ...props }) => {
   const { changeActiveTab, tabs } = useTabs();
   return (
     <div className="flex flex-col h-full">
@@ -20,7 +20,7 @@ const Tabs = () => {
         </div>
       </div>
       <div className="flex-1  mb-8 overflow-y-scroll bg-secondary">
-        <TabInstance tabs={tabs} />
+        <TabInstance {...props} tabs={tabs} />
       </div>
     </div>
   );

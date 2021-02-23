@@ -3,7 +3,7 @@ import Description from "../Description/Description";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import Result from "../Result/Result";
 
-const TabInstance = ({ tabs }) => {
+const TabInstance = ({ tabs, ...props }) => {
   const [componentToRender, setComponentToRender] = useState("description");
 
   useLayoutEffect(() => {
@@ -15,9 +15,9 @@ const TabInstance = ({ tabs }) => {
 
   return (
     <>
-      <Description show={componentToRender === "description"} />
-      <LeaderBoard show={componentToRender === "leaderboard"} />
-      <Result show={componentToRender === "result"} />
+      <Description {...props} show={componentToRender === "description"} />
+      <LeaderBoard {...props} show={componentToRender === "leaderboard"} />
+      <Result {...props} show={componentToRender === "result"} />
     </>
   );
 };

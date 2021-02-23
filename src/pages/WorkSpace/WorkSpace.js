@@ -37,7 +37,10 @@ const WorkSpace = () => {
             />
           </LeftPane>
           <RightPane>
-            <Tabs />
+            <Tabs
+              activeQuestionId={activeQuestionId}
+              isCodeSubmitting={isCodeSubmitting}
+            />
           </RightPane>
         </Splitter>
       </div>
