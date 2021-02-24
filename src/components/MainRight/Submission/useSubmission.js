@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
 
-const useSubmission = ({ submissions, latestSubmission }) => {
-  const [allSubmissions, setAllSubmissions] = useState(submissions || []);
+const useSubmission = ({
+  submissions: initialSubmissions,
+  latestSubmission,
+}) => {
+  const [allSubmissions, setAllSubmissions] = useState([]);
 
-  // useEffect(() => {
-  //   if (!submissions) {
-  //     return;
-  //   }
-  //   setAllSubmissions((currentSubmissions) => {
-  //     return [...currentSubmissions, ...submissions];
-  //   });
-  // }, [submissions]);
+  useEffect(() => {
+    if (!initialSubmissions) {
+      return;
+    }
+    setAllSubmissions(initialSubmissions);
+  }, [initialSubmissions]);
 
   useEffect(() => {
     if (!latestSubmission) {
       return;
     }
-    setAllSubmissions((current) => {
-      const newState = [...current];
-      newState.push(latestSubmission);
-      return newState;
+    setAllSubmissions((currentSubmissions) => {
+      const newSubmissionState = [...currentSubmissions];
+      newSubmissionState.push(latestSubmission);
+      return newSubmissionState;
     });
   }, [latestSubmission]);
 
-  return { allSubmissions, latestSubmission };
+  return { allSubmissions };
 };
 
 export default useSubmission;
