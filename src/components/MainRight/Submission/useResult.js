@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 
 const useResult = ({ submissions: initialSubmissions, latestSubmission }) => {
-  const [currentSubmissions, setCurrentSubmissions] = useState(
-    initialSubmissions
-  );
+  const [currentSubmissions, setCurrentSubmissions] = useState([]);
+
+  useEffect(() => {
+    if (!initialSubmissions) {
+      return;
+    }
+    setCurrentSubmissions(initialSubmissions);
+  }, [initialSubmissions]);
 
   useEffect(() => {
     if (!latestSubmission) {

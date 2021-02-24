@@ -19,6 +19,7 @@ const Result = ({
   if (isCodeSubmitting) return <div>Submitting</div>;
   return (
     <>
+      {console.log(currentSubmissions)}
       <LatestSubmission submission={latestSubmission} />
       <PreviousSubmissions submissions={currentSubmissions} />
     </>

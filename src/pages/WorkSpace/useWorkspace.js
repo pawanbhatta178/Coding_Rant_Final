@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "react-query";
 import { compile } from "../../api/Compile";
 import useLocalStorage from "../../components/common/useLocalStorage";
 import { getAllSubmissions } from "../../api/Submission";
+import { StringToJson } from "../../components/common/StringToJson";
 
 const langId = {
   javascript: "js",
@@ -76,7 +77,7 @@ const useWorkspace = () => {
     changeCode,
     activeLanguage,
     changeActiveLanguage,
-    submissions,
+    submissions: StringToJson(submissions, "testResult"),
     latestSubmission,
   };
 };
