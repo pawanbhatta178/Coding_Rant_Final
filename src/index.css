@@ -55,5 +55,5 @@
 }
 
 .sticky-header {
-  @apply sticky top-0 text-lg bg-secondary font-extralight text-secondary pt-2 pb-2 shadow-sm;
+  @apply sticky top-0 text-xl bg-secondary font-extralight text-secondary pt-2 pb-2  shadow-sm;
 }

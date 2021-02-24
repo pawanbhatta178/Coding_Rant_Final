@@ -1,12 +1,10 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { FcCheckmark } from "react-icons/fc";
 import { RiCloseFill } from "react-icons/ri";
 import { IoCloudUploadSharp } from "react-icons/io5";
 import RectangleSpinner from "../../Loader/RectangleSpinner";
 
 const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
-  const [error] = useState(submission?.error);
-
   if (isCodeSubmitting) return <RectangleSpinner text="Submitting" />;
 
   return (
@@ -21,15 +19,19 @@ const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
           </div>
         </div>
       )}
-      {error && (
+      {submission?.error && (
         <div className="text-red-600 flex flex-col ">
-          <div className="text-xl pb-4">{error.name || "Error"}</div>
-          <div className="border bg-red-100 overflow-y-scroll h-24 p-2 rounded-sm">
-            {error.stack || error.message || error}
+          <div className="text-xl pb-4 pt-4">
+            {submission?.error?.name || "Error"}
+          </div>
+          <div className="border bg-red-200 overflow-y-scroll h-24 p-2 rounded-sm">
+            {submission?.error.stack ||
+              submission?.error?.message ||
+              submission?.error}
           </div>
         </div>
       )}
-      {submission && (
+      {submission?.testResult && (
         <div className="flex flex-col gap-y-1">
           <div className=" flex gap-x-4 h-10 bg-gradient-to-r from-purple-400 to-purple-500 text-white items-center mb-2 px-2 rounded-sm">
             <div className="flex gap-x-2">
