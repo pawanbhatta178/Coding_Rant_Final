@@ -6,14 +6,13 @@ import RectangleSpinner from "../../Loader/RectangleSpinner";
 
 const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
   const [error] = useState(submission?.error);
-  const [result] = useState(submission?.testResult);
 
   if (isCodeSubmitting) return <RectangleSpinner text="Submitting" />;
 
   return (
-    <div className="pb-6 mb-6 text-xs h-1/3 overflow-y-auto">
+    <div className=" text-xs  h-full">
       {!submission && (
-        <div className="flex flex-col items-center justify-center h-full">
+        <div className="flex flex-col items-center justify-start h-full pt-8">
           <div className="icon-accent text-6xl">
             <IoCloudUploadSharp />{" "}
           </div>
@@ -30,7 +29,7 @@ const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
           </div>
         </div>
       )}
-      {result && (
+      {submission && (
         <div className="flex flex-col gap-y-1">
           <div className=" flex gap-x-4 h-10 bg-gradient-to-r from-purple-400 to-purple-500 text-white items-center mb-2 px-2 rounded-sm">
             <div className="flex gap-x-2">
@@ -63,8 +62,8 @@ const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
               ReturnVal
             </div>
             <div className="text-gray-600 p-2 border bg-purple-100">Passed</div>
-            {result &&
-              result.map((testCase, i) => {
+            {submission.testResult &&
+              submission.testResult.map((testCase, i) => {
                 return (
                   <Fragment key={i}>
                     <div className="col-span-1 border-b p-2">
