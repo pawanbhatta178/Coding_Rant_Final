@@ -2,6 +2,7 @@ import React from "react";
 import useSubmission from "./useSubmission";
 import LatestSubmission from "./LatestSubmission";
 import PreviousSubmissions from "./PreviousSubmissions";
+import NoPreviousSubmission from "./NoPreviousSubmission";
 
 const Result = ({
   show,
@@ -28,7 +29,7 @@ const Result = ({
       </div>
       <div className="py-4 border-t border-dashed">
         <div className="sticky-header mb-2">Previous Submissions</div>
-        {allSubmissions &&
+        {allSubmissions?.length > 0 ? (
           allSubmissions
             .filter((submission) => {
               if (latestSubmission) {
@@ -41,7 +42,10 @@ const Result = ({
             .reverse()
             .map((submission) => {
               return <PreviousSubmissions submission={submission} />;
-            })}
+            })
+        ) : (
+          <NoPreviousSubmission />
+        )}
       </div>
     </div>
   );
