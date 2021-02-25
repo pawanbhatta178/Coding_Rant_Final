@@ -5,7 +5,7 @@ import useFetch from "../../common/useFetch";
 const useSubmission = ({ activeQuestionId, latestSubmission }) => {
   const [allSubmissions, setAllSubmissions] = useState([]);
 
-  const { data, error, isLoading, isRetrying } = useFetch(
+  const { data } = useFetch(
     async () => await getAllSubmissions({ questionId: activeQuestionId })
   );
 
