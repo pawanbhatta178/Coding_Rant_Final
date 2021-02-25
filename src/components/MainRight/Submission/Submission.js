@@ -19,7 +19,6 @@ const Result = ({
   if (!show) return null;
   return (
     <div className="px-4 md:px-6  h-full">
-      {console.log(latestSubmission, allSubmissions)}
       <div className="h-3/6 overflow-y-auto">
         <div className="sticky-header">Latest Submission</div>
         <LatestSubmission
@@ -39,6 +38,7 @@ const Result = ({
               }
               return true;
             })
+            .reverse()
             .map((submission) => {
               return <PreviousSubmissions submission={submission} />;
             })}

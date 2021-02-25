@@ -36,15 +36,11 @@ const SmallCard = ({ type }) => {
 
 const PreviousSubmission = ({ submission }) => {
   const [toggleContent, setToggleContent] = React.useState(false);
-  const [error] = React.useState(submission?.error);
-  const [result] = React.useState(submission?.testResult);
-  const [ranked] = React.useState(submission?.ranked);
-  const [passed] = React.useState(
-    submission?.testResult?.reduce(
-      (acc, currentValue) => currentValue.passed && acc,
-      true
-    )
-  );
+
+  const error = submission?.error;
+  const passed = submission?.passedAllTests;
+  const ranked = submission?.ranked;
+  const result = submission?.testResult;
 
   return (
     <>
@@ -56,6 +52,7 @@ const PreviousSubmission = ({ submission }) => {
         )}`}
         onClick={() => setToggleContent(!toggleContent)}
       >
+        {console.log(submission)}
         <div className="text-sm flex items-center gap-x-1">
           <div>
             <BsHash />{" "}
@@ -65,14 +62,13 @@ const PreviousSubmission = ({ submission }) => {
             {submission.submissionId}
           </div>
         </div>
-        <div className="flex gap-x-2 ">
+        <div className="flex gap-x-2 items-center">
           {ranked && <SmallCard type="best" />}
           {passed && <SmallCard type="passed" />}
           {error && <SmallCard type="error" />}
           {!passed && !error && <SmallCard type="failed" />}
-          <div>
-            <BsFillCaretDownFill />
-          </div>
+
+          <BsFillCaretDownFill />
         </div>
       </div>
       <CSSTransition
@@ -81,7 +77,7 @@ const PreviousSubmission = ({ submission }) => {
         classNames="result-dropdown"
         timeout={300}
       >
-        <div className="p-2">
+        <div className="pb-8">
           <LatestSubmission submission={submission} />
         </div>
       </CSSTransition>
