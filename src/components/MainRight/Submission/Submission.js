@@ -30,9 +30,18 @@ const Result = ({
       <div className="py-4 border-t border-dashed">
         <div className="sticky-header mb-2">Previous Submissions</div>
         {allSubmissions &&
-          allSubmissions.map((submission) => {
-            return <PreviousSubmissions submission={submission} />;
-          })}
+          allSubmissions
+            .filter((submission) => {
+              if (latestSubmission) {
+                return (
+                  latestSubmission.submissionId !== submission.submissionId
+                );
+              }
+              return true;
+            })
+            .map((submission) => {
+              return <PreviousSubmissions submission={submission} />;
+            })}
       </div>
     </div>
   );
