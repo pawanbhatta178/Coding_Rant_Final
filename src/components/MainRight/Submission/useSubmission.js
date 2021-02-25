@@ -10,17 +10,17 @@ const useSubmission = ({
     if (!initialSubmissions) {
       return;
     }
-    setAllSubmissions((current) => [...current, initialSubmissions]);
+    setAllSubmissions((_) => [...initialSubmissions]);
   }, [initialSubmissions]);
 
-  // useEffect(() => {
-  //   if (!latestSubmission) {
-  //     return;
-  //   }
-  //   setAllSubmissions((currentSubmissions) => {
-  //     return [...currentSubmissions, latestSubmission];
-  //   });
-  // }, [latestSubmission]);
+  useEffect(() => {
+    if (!latestSubmission) {
+      return;
+    }
+    setAllSubmissions((currentSubmissions) => {
+      return [...currentSubmissions, latestSubmission];
+    });
+  }, [latestSubmission]);
 
   return { allSubmissions };
 };

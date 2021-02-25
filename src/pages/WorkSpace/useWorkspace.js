@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 import useScrollToTop from "../../components/common/useScrollToTop";
 import { useMutation, useQuery } from "react-query";
@@ -19,6 +19,7 @@ const useWorkspace = () => {
   const [isCodeSubmitting, setCodeSubmitting] = useState(false);
   const [activeQuestionId, setActiveQuestionId] = useState("1");
   const [latestSubmission, setLatestSubmission] = useState();
+  const [submissions, setSubmissions] = useState();
   const [activeLanguage, setActiveLanguage] = useLocalStorage(
     "activeLanguage",
     "javascript"
@@ -29,10 +30,21 @@ const useWorkspace = () => {
     ""
   );
 
-  const { data: submissions } = useQuery(
-    ["submissions", { activeQuestionId }],
-    () => getAllSubmissions({ questionId: activeQuestionId })
-  );
+  // const { data: submissions } = useQuery(
+  //   ["submissions", { activeQuestionId }],
+  //   () => getAllSubmissions({ questionId: activeQuestionId })
+  // );
+
+  useEffect(() => {
+    console.log("running");
+    (async () => {
+      const data = await getAllSubmissions({ questionId: activeQuestionId });
+      const formattedData = StringToJson(data, "testResult");
+      setSubmissions((_) => {
+        return formattedData;
+      });
+    })();
+  }, [activeQuestionId]);
 
   const changeCode = (newCode, _) => {
     setCode(newCode);
@@ -77,7 +89,7 @@ const useWorkspace = () => {
     changeCode,
     activeLanguage,
     changeActiveLanguage,
-    submissions: StringToJson(submissions, "testResult"),
+    submissions,
     latestSubmission,
   };
 };
