@@ -1,9 +1,7 @@
 import React from "react";
 import LatestSubmission from "./LatestSubmission";
-import { CSSTransition } from "react-transition-group";
 import { BsFillCaretDownFill, BsHash } from "react-icons/bs";
-
-import "./PreviousSubmission.css";
+import DropDownContent from "../../Animated/DropDownContent";
 
 const style = (error, result, passed) => {
   if (error) {
@@ -71,16 +69,11 @@ const PreviousSubmission = ({ submission }) => {
           <BsFillCaretDownFill />
         </div>
       </div>
-      <CSSTransition
-        in={toggleContent}
-        unmountOnExit
-        classNames="result-dropdown"
-        timeout={300}
-      >
+      <DropDownContent show={toggleContent}>
         <div className="pb-8">
           <LatestSubmission submission={submission} />
         </div>
-      </CSSTransition>
+      </DropDownContent>
     </>
   );
 };
