@@ -40,8 +40,8 @@ const Result = ({
               return true;
             })
             .reverse()
-            .map((submission) => {
-              return <PreviousSubmissions submission={submission} />;
+            .map((submission, i) => {
+              return <PreviousSubmissions key={i} submission={submission} />;
             })
         ) : (
           <NoPreviousSubmission />

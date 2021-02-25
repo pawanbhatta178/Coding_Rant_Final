@@ -36,7 +36,9 @@ const PreviousSubmission = ({ submission }) => {
   const [toggleContent, setToggleContent] = React.useState(false);
 
   const error = submission?.error;
-  const passed = submission?.passedAllTests;
+  const passed =
+    submission?.passedAllTests ??
+    submission?.testResult?.reduce((acc, test) => !!(acc && test.passed), true);
   const ranked = submission?.ranked;
   const result = submission?.testResult;
 
