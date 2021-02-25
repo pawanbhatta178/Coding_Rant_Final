@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { getAllSubmissions } from "../../../api/Submission";
 import { StringToJson } from "../../common/StringToJson";
+import useFetch from "../../common/useFetch";
 const useSubmission = ({ activeQuestionId, latestSubmission }) => {
   const [allSubmissions, setAllSubmissions] = useState([]);
 
-  useEffect(() => {
-    console.log("running");
-    (async () => {
-      const data = await getAllSubmissions({ questionId: activeQuestionId });
-      const formattedData = StringToJson(data, "testResult");
+  const { data, error, isLoading, isRetrying } = useFetch(
+    async () => await getAllSubmissions({ questionId: activeQuestionId })
+  );
 
-      setAllSubmissions((_) => {
-        return formattedData;
-      });
-    })();
-  }, [activeQuestionId]);
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+    const formattedData = StringToJson(data, "testResult");
+    setAllSubmissions((_) => {
+      return formattedData;
+    });
+  }, [data]);
 
   useEffect(() => {
     if (!latestSubmission) {

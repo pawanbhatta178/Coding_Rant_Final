@@ -52,7 +52,6 @@ const PreviousSubmission = ({ submission }) => {
         )}`}
         onClick={() => setToggleContent(!toggleContent)}
       >
-        {console.log(submission)}
         <div className="text-sm flex items-center gap-x-1">
           <div>
             <BsHash />{" "}
