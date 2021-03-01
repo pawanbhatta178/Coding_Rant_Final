@@ -3,7 +3,6 @@ import useSubmission from "./useSubmission";
 import LatestSubmission from "./LatestSubmission";
 import PreviousSubmissions from "./PreviousSubmissions";
 import NoPreviousSubmission from "./NoPreviousSubmission";
-import RectangleSpinner from "../../Loader/RectangleSpinner";
 
 const Result = ({
   show,
@@ -12,7 +11,7 @@ const Result = ({
   submissions,
   latestSubmission,
 }) => {
-  const { allSubmissions, isLoading } = useSubmission({
+  const { allSubmissions } = useSubmission({
     activeQuestionId,
     submissions,
     latestSubmission,
