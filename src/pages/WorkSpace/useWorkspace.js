@@ -30,7 +30,7 @@ const useWorkspace = () => {
     ""
   );
 
-  console.log(code);
+  console.log(activeLanguage, activeQuestionId, code);
 
   const changeCode = (newCode, _) => {
     setCode(newCode);
