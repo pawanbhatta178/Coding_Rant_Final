@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 import useScrollToTop from "../../components/common/useScrollToTop";
 import { useMutation } from "react-query";
 import { compile } from "../../api/Compile";
 import useLocalStorage from "../../components/common/useLocalStorage";
+import { AppContext } from "../../AppContext";
+import App from "../../App";
 
 const langId = {
   javascript: "js",
@@ -14,6 +16,9 @@ const langId = {
 const useWorkspace = () => {
   useScrollToTop();
   useDisableBodyScroll(true);
+
+  const { onLoginToggle } = useContext(AppContext);
+
   const [isCodeSubmitting, setCodeSubmitting] = useState(false);
   const [activeQuestionId, setActiveQuestionId] = useLocalStorage(
     "activeQuestionId",
@@ -49,6 +54,7 @@ const useWorkspace = () => {
     },
     onError: (err) => {
       console.log(err);
+      onLoginToggle();
       setCodeSubmitting(false);
     },
   });

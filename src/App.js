@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import WorkSpace from "./pages/WorkSpace/WorkSpace";
@@ -8,6 +8,7 @@ import useRefetchToken from "./helper/auth/useRefetchToken";
 import useAuthToken from "./helper/auth/useAuthToken";
 import userReducer from "./reducers/userReducer";
 import { UserContext } from "./UserContext";
+import { AppContext } from "./AppContext";
 
 const ACCESS_KEY_TIMEOUT = 10000;
 
@@ -31,22 +32,66 @@ function App() {
     userDispatch({ type: "SET_TOKEN", payload: newToken });
   }, [newToken]);
 
+  const [isSideBarOn, setIsSideBarOn] = useState(false);
+  const [isLoginOn, setIsLoginOn] = useState(false);
+  const [isUserMenuOn, setIsUserMenuOn] = useState(false);
+  const [isSignUpOn, setIsSignUpOn] = useState(false);
+
+  const onSideBarToggle = () => {
+    setIsSideBarOn(!isSideBarOn);
+  };
+
+  const onUserMenuToggle = () => {
+    setIsUserMenuOn(!isUserMenuOn);
+  };
+
+  const onLoginToggle = () => {
+    setIsLoginOn((currentState) => {
+      if (!currentState) {
+        setIsSignUpOn(false);
+      }
+      return !currentState;
+    });
+  };
+
+  const onSignUpToggle = () => {
+    setIsSignUpOn((currentState) => {
+      if (!currentState) {
+        setIsLoginOn(false);
+      }
+      return !currentState;
+    });
+  };
+
   return (
-    <UserContext.Provider value={{ user: userState, userDispatch }}>
-      <Router>
-        <Switch>
-          <Route path="/workspace">
-            <WorkSpace />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="*">
-            <PageNotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </UserContext.Provider>
+    <AppContext.Provider
+      value={{
+        isSideBarOn,
+        isLoginOn,
+        isSignUpOn,
+        isUserMenuOn,
+        onSideBarToggle,
+        onLoginToggle,
+        onSignUpToggle,
+        onUserMenuToggle,
+      }}
+    >
+      <UserContext.Provider value={{ user: userState, userDispatch }}>
+        <Router>
+          <Switch>
+            <Route path="/workspace">
+              <WorkSpace />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="*">
+              <PageNotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </UserContext.Provider>
+    </AppContext.Provider>
   );
 }
 
