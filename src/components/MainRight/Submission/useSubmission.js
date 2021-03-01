@@ -5,7 +5,7 @@ import useFetch from "../../common/useFetch";
 const useSubmission = ({ activeQuestionId, latestSubmission }) => {
   const [allSubmissions, setAllSubmissions] = useState([]);
 
-  const { data } = useFetch(
+  const { data, isLoading } = useFetch(
     async () => await getAllSubmissions({ questionId: activeQuestionId })
   );
 
@@ -13,7 +13,8 @@ const useSubmission = ({ activeQuestionId, latestSubmission }) => {
     if (!data) {
       return;
     }
-    const formattedData = StringToJson(data, "testResult");
+    const formattedData = StringToJson(data, "testResult").reverse();
+
     setAllSubmissions((_) => {
       return formattedData;
     });
@@ -23,12 +24,14 @@ const useSubmission = ({ activeQuestionId, latestSubmission }) => {
     if (!latestSubmission) {
       return;
     }
+    if (latestSubmission?.error) {
+      return;
+    }
     setAllSubmissions((currentSubmissions) => {
-      return [...currentSubmissions, latestSubmission];
+      return [latestSubmission, ...currentSubmissions];
     });
   }, [latestSubmission]);
-
-  return { allSubmissions };
+  return { allSubmissions, isLoading };
 };
 
 export default useSubmission;

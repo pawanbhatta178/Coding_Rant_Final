@@ -57,8 +57,8 @@ const PreviousSubmission = ({ submission }) => {
             <BsHash />{" "}
           </div>
           {` `}
-          <div className=" text-base font-semibold">
-            {submission.submissionId}
+          <div className=" text-xs font-light ">
+            {submission.submittedAt || "N/A"}
           </div>
         </div>
         <div className="flex gap-x-2 items-center">

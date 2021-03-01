@@ -3,6 +3,7 @@ import useSubmission from "./useSubmission";
 import LatestSubmission from "./LatestSubmission";
 import PreviousSubmissions from "./PreviousSubmissions";
 import NoPreviousSubmission from "./NoPreviousSubmission";
+import RectangleSpinner from "../../Loader/RectangleSpinner";
 
 const Result = ({
   show,
@@ -11,7 +12,7 @@ const Result = ({
   submissions,
   latestSubmission,
 }) => {
-  const { allSubmissions } = useSubmission({
+  const { allSubmissions, isLoading } = useSubmission({
     activeQuestionId,
     submissions,
     latestSubmission,
@@ -29,6 +30,7 @@ const Result = ({
       </div>
       <div className="py-4 border-t border-dashed">
         <div className="sticky-header mb-2">Previous Submissions</div>
+
         {allSubmissions?.length > 0 ? (
           allSubmissions
             .filter((submission) => {
@@ -39,9 +41,13 @@ const Result = ({
               }
               return true;
             })
-            .reverse()
             .map((submission, i) => {
-              return <PreviousSubmissions key={i} submission={submission} />;
+              return (
+                <PreviousSubmissions
+                  key={submission.submittedAt}
+                  submission={submission}
+                />
+              );
             })
         ) : (
           <NoPreviousSubmission />
