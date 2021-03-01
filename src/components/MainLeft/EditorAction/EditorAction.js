@@ -1,7 +1,7 @@
 import React from "react";
 import SubmitButton from "../../Button/SubmitButton";
 import RectangleSpinner from "../../Loader/RectangleSpinner";
-
+import { IoShuffle } from "react-icons/io5";
 const EditorAction = ({
   isCodeSubmitting,
   onCodeSubmit,
@@ -12,10 +12,16 @@ const EditorAction = ({
       {isCodeSubmitting ? (
         <RectangleSpinner />
       ) : (
-        <>
+        <div className="flex  items-center justify-center w-full">
           <SubmitButton onClick={onCodeSubmit}>Submit</SubmitButton>
-          <button onClick={changeActiveQuestionId}>Change</button>
-        </>
+          <div className="p-2 rounded-full hover-transition">
+            {" "}
+            <IoShuffle
+              className="text-xl "
+              onClick={changeActiveQuestionId}
+            ></IoShuffle>
+          </div>
+        </div>
       )}
     </div>
   );

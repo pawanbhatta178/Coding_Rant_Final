@@ -8,6 +8,9 @@ const useTabs = ({ isCodeSubmitting }) => {
   ]);
 
   useEffect(() => {
+    if (!isCodeSubmitting) {
+      return;
+    }
     setTabs((currentTabs) => {
       const newTabState = currentTabs.map((tab) => {
         if (tab.id === "result") {
