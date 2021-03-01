@@ -4,7 +4,7 @@ import RectangleSpinner from "../../Loader/RectangleSpinner";
 
 const EditorAction = ({ isCodeSubmitting, onCodeSubmit }) => {
   return (
-    <div className="flex-0 flex justify-center items-center mt-1 h-full mb-8">
+    <div className="flex-0 flex justify-center items-center mt-1 h-10 mb-8">
       {isCodeSubmitting ? (
         <RectangleSpinner />
       ) : (

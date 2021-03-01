@@ -33,7 +33,7 @@ const Editor = ({
       />
       <MonacoEditor
         language={activeLanguage}
-        height="82vh"
+        height="83vh"
         value={code}
         editorDidMount={handleEditorDidMount}
         onChange={changeCode}
