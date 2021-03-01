@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { getAllSubmissions } from "../../../api/Submission";
 import { StringToJson } from "../../common/StringToJson";
-import useFetch from "../../common/useFetch";
+import { useQuery } from "react-query";
+
 const useSubmission = ({ activeQuestionId, latestSubmission }) => {
   const [allSubmissions, setAllSubmissions] = useState([]);
 
-  const { data, isLoading } = useFetch(
-    async () => await getAllSubmissions({ questionId: activeQuestionId })
+  const { data, isLoading } = useQuery(["submissions", activeQuestionId], () =>
+    getAllSubmissions({ questionId: activeQuestionId })
   );
 
   useEffect(() => {

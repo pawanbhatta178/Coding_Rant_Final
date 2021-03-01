@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDisableBodyScroll } from "../../components/common/useDisableBodyScroll";
 import useScrollToTop from "../../components/common/useScrollToTop";
 import { useMutation } from "react-query";
@@ -15,7 +15,10 @@ const useWorkspace = () => {
   useScrollToTop();
   useDisableBodyScroll(true);
   const [isCodeSubmitting, setCodeSubmitting] = useState(false);
-  const [activeQuestionId, setActiveQuestionId] = useState("1");
+  const [activeQuestionId, setActiveQuestionId] = useLocalStorage(
+    "activeQuestionId",
+    "1"
+  );
   const [latestSubmission, setLatestSubmission] = useState();
   const [activeLanguage, setActiveLanguage] = useLocalStorage(
     "activeLanguage",
@@ -26,6 +29,8 @@ const useWorkspace = () => {
     `Code:${activeQuestionId}:${activeLanguage}`,
     ""
   );
+
+  console.log(code);
 
   const changeCode = (newCode, _) => {
     setCode(newCode);
@@ -58,7 +63,13 @@ const useWorkspace = () => {
   };
 
   const changeActiveQuestionId = (id) => {
-    setActiveQuestionId(id);
+    setActiveQuestionId((currentId) => {
+      if (currentId === "1") {
+        return "2";
+      } else {
+        return "1";
+      }
+    });
   };
 
   return {

@@ -11,12 +11,15 @@ const Editor = ({
   changeActiveQuestionId,
   activeLanguage,
   changeActiveLanguage,
-  code,
   changeCode,
+  code,
 }) => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { theme, toggleTheme } = useEditor(activeQuestionId);
+  const { theme, toggleTheme } = useEditor({
+    activeQuestionId,
+    activeLanguage,
+  });
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
@@ -42,6 +45,7 @@ const Editor = ({
       <EditorAction
         onCodeSubmit={onCodeSubmit}
         isCodeSubmitting={isCodeSubmitting}
+        changeActiveQuestionId={changeActiveQuestionId}
       />
     </div>
   );
