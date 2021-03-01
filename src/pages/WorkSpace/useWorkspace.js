@@ -5,7 +5,6 @@ import { useMutation } from "react-query";
 import { compile } from "../../api/Compile";
 import useLocalStorage from "../../components/common/useLocalStorage";
 import { AppContext } from "../../AppContext";
-import App from "../../App";
 
 const langId = {
   javascript: "js",
