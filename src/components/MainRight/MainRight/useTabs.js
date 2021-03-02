@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const useTabs = ({ isCodeSubmitting }) => {
   const [tabs, setTabs] = useState([
     { id: "description", name: "Description", open: true },
-    { id: "result", name: "Result", open: false },
+    { id: "result", name: "Submissions", open: false },
     { id: "leaderboard", name: "LeaderBoard", open: false },
   ]);
 
