@@ -15,7 +15,11 @@
 }
 
 .bg-accent {
-  @apply bg-purple-800 dark:bg-purple-500;
+  @apply bg-purple-600 dark:bg-purple-500;
+}
+
+.bg-light-accent {
+  @apply bg-purple-500 dark:bg-purple-400;
 }
 
 .text-primary {
