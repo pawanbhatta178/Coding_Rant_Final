@@ -4,7 +4,7 @@ import LatestSubmission from "./LatestSubmission";
 import PreviousSubmissions from "./PreviousSubmissions";
 import NoPreviousSubmission from "./NoPreviousSubmission";
 
-const Result = ({
+const Submission = ({
   show,
   isCodeSubmitting,
   activeQuestionId,
@@ -56,4 +56,4 @@ const Result = ({
   );
 };
 
-export default Result;
+export default Submission;

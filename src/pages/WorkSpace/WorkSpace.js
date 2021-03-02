@@ -18,7 +18,6 @@ const WorkSpace = () => {
     changeCode,
     activeLanguage,
     changeActiveLanguage,
-    submissions,
     latestSubmission,
   } = useWorkspace();
   return (
@@ -42,7 +41,6 @@ const WorkSpace = () => {
             <Tabs
               activeQuestionId={activeQuestionId}
               isCodeSubmitting={isCodeSubmitting}
-              submissions={submissions}
               latestSubmission={latestSubmission}
             />
           </RightPane>

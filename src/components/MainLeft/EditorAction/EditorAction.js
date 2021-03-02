@@ -17,7 +17,7 @@ const EditorAction = ({
           <div className="p-2 rounded-full hover-transition">
             {" "}
             <IoShuffle
-              className="text-xl "
+              className="text-xl"
               onClick={changeActiveQuestionId}
             ></IoShuffle>
           </div>
