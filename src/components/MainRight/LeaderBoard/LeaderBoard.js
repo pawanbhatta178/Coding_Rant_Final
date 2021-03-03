@@ -1,216 +1,66 @@
 import React from "react";
 import "./LeaderBoard.css";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
-import useUser from "../../User/useUser";
+import useLeaderBoard from "./useLeaderBoard";
+import { IoChevronUpSharp } from "react-icons/io5";
 
-const LeaderBoard = ({ show, activeQuestionId, ...props }) => {
-  const [data, setData] = React.useState(null);
-  const { data: usr } = useUser();
+const baseStyle =
+  "grid-title text-secondary font-extralight cursor-pointer mr-4";
 
-  React.useEffect(() => {
-    const rankingData = [
-      {
-        rank: "1",
-        prevRank: "2",
-        username: "pawan",
-        country: "NP",
-        wordCount: "1234",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "2",
-        prevRank: "3",
-        username: "Prabhat",
-        country: "NP",
-        wordCount: "5949",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "3",
-        prevRank: "4",
-        username: "Usha",
-        country: "US",
-        wordCount: "2323",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "4",
-        prevRank: "4",
-        username: "Rita",
-        country: "IN",
-        wordCount: "0993",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "5",
-        prevRank: "2",
-        username: "Hari",
-        country: "IO",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "6",
-        prevRank: "6",
-        username: "Zair",
-        country: "IO",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "7",
-        prevRank: "1",
-        username: "Megan",
-        country: "KY",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "8",
-        prevRank: "4",
-        username: "Dwarf",
-        country: "AF",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "9",
-        prevRank: "4",
-        username: "Mashy",
-        country: "AR",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "10",
-        prevRank: "78",
-        username: "Lorry",
-        country: "AM",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "11",
-        prevRank: "6",
-        username: "Evan",
-        country: "NE",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "12",
-        prevRank: "7",
-        username: "Helsinki",
-        country: "JP",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "13",
-        prevRank: "14",
-        username: "Tokyo",
-        country: "MO",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "14",
-        prevRank: "17",
-        username: "Muse",
-        country: "NA",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "15",
-        prevRank: "90",
-        username: "Dora",
-        country: "SI",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "16",
-        prevRank: "10",
-        username: "Amazon",
-        country: "SL",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "17",
-        prevRank: "4",
-        username: "Kesha",
-        country: "FI",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "18",
-        prevRank: "4",
-        username: "Lita",
-        country: "AZ",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-      {
-        rank: "109",
-        prevRank: "4",
-        username: "Zian",
-        country: "PL",
-        wordCount: "1232",
-        timeTaken: "8.8",
-      },
-    ];
-    //finding user's record
-    const username = usr?.username;
+const selectedStyle = "border-b-2 border-accent text-accent";
 
-    setTimeout(() => {
-      setData(
-        rankingData.map((challenger) => {
-          if (challenger.username !== username) {
-            return challenger;
-          } else {
-            return { ...challenger, myRecord: true };
-          }
-        })
-      );
-    }, 500);
-  }, [activeQuestionId, usr]);
+const SortIcon = ({ show }) => {
+  if (!show) return null;
+  return (
+    <div className=" w-full flex justify-end ">
+      <IoChevronUpSharp />
+    </div>
+  );
+};
+
+const LeaderBoard = ({ show, activeQuestionId }) => {
+  const { rankingData, basedOn, changeBasedOn, isLoading } = useLeaderBoard({
+    questionId: activeQuestionId,
+  });
 
   if (!show) return null;
 
   return (
     <>
-      <div className="grid-leaderboard text-sm m-4 rounded overflow-y-auto">
-        <div className="grid-title text-secondary pl-1"></div>
+      {console.log(rankingData)}
+      <div className="grid-leaderboard gap-y-2 text-sm m-4 rounded overflow-y-auto">
         <div className="grid-title text-secondary pl-1"></div>
         <div className="grid-title text-secondary "></div>
         <div className="grid-title text-secondary "></div>
         <div className="grid-title text-secondary font-extralight">
           Username
         </div>
-        <div className="grid-title text-secondary font-extralight">
+        <div
+          onClick={() => changeBasedOn("word_count")}
+          className={
+            basedOn === "word_count"
+              ? `${baseStyle} ${selectedStyle}`
+              : `${baseStyle}`
+          }
+        >
           WordCount
+          <SortIcon show={basedOn === "word_count"} />
         </div>
-        <div className="grid-title text-secondary font-extralight">
+        <div
+          onClick={() => changeBasedOn("time_taken")}
+          className={
+            basedOn === "time_taken"
+              ? `${baseStyle} ${selectedStyle}`
+              : `${baseStyle}`
+          }
+        >
           TimeTaken
+          <SortIcon show={basedOn === "time_taken"} />
         </div>
-
-        {data.map((challenger, i) => (
+        {rankingData.map((challenger, i) => (
           <React.Fragment key={i}>
             <div
-              className={`flex items-center ${
-                challenger?.myRecord && "bg-accent text-white rounded-l-lg"
-              }`}
-            >
-              {/* <ChangeInRank
-                current={parseInt(challenger.rank)}
-                previous={parseInt(challenger.prevRank)}
-              /> */}
-            </div>
-            <div
-              className={`flex items-center ${
+              className={`flex items-center pl-2 ${
                 challenger?.myRecord && "bg-accent text-white"
               }`}
             >
@@ -244,7 +94,7 @@ const LeaderBoard = ({ show, activeQuestionId, ...props }) => {
               {challenger.wordCount}
             </div>
             <div
-              className={`flex items-center ${
+              className={`flex items-center pr-2 mr-4 ${
                 challenger?.myRecord && "bg-accent text-white rounded-r-sm"
               }`}
             >
