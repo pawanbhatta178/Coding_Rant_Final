@@ -66,7 +66,7 @@ const SubmissionLatest = ({ isCodeSubmitting, submission }) => {
                       {testCase.expectedOutput}
                     </div>
                     <div className="col-span-1 border-b  p-2">
-                      {testCase.returnVal}
+                      {JSON.stringify(testCase.returnVal)}
                     </div>
                     <div className="col-span-1 border-b p-2">
                       {testCase.passed ? (
