@@ -25,8 +25,7 @@ const useTabs = ({ isCodeSubmitting }) => {
     });
   }, [isCodeSubmitting]);
 
-  const changeActiveTab = (e) => {
-    const { value: tabId } = e.target;
+  const changeActiveTab = (tabId) => {
     setTabs(
       tabs.map((tab) => {
         if (tab.id === tabId) {

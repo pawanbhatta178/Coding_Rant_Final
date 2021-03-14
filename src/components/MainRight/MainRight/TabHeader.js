@@ -1,6 +1,5 @@
 import React from "react";
-import { BiMessageAltDetail, BiTrophy } from "react-icons/bi";
-import { FiUploadCloud } from "react-icons/fi";
+import { BiMessageAltDetail, BiTrophy, BiHistory } from "react-icons/bi";
 
 const baseStyle = "button-base-style font-thin  px-2 h-7 flex items-center";
 
@@ -10,14 +9,16 @@ const TabHeader = ({ name, id, handleTabClick, selected }) => {
   return (
     <button
       className={selected ? selectedStyle : baseStyle}
-      value={id}
-      onClick={handleTabClick}
+      onClick={() => handleTabClick(id)}
     >
-      {name === "Description" && <BiMessageAltDetail />}
-      {name === "Submissions" && <FiUploadCloud />}
-      {name === "LeaderBoard" && <BiTrophy />}
-      {console.log(id)}
-      {name}
+      <div className="pr-1 text-xs">
+        {" "}
+        {name === "Description" && <BiMessageAltDetail />}
+        {name === "Submissions" && <BiHistory />}
+        {name === "LeaderBoard" && <BiTrophy />}
+      </div>
+
+      <div>{name}</div>
     </button>
   );
 };
