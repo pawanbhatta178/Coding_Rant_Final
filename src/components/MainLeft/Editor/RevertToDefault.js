@@ -13,7 +13,7 @@ const RevertToDefault = ({
     <ModalWithoutOverlay show={show} onClose={toggle}>
       <DialogBox
         header="Restore Default Code?"
-        content="Restoring the default code will permanently delete any progress you have made on this challenge and this language."
+        content="Restoring the default code will permanently delete any progress you have made on this challenge for the language you have chosen."
         positiveAnswer="Yes"
         positiveAnswerAction={retrieveDefaultCode}
         negativeAnswer="No"

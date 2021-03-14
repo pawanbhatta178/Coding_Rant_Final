@@ -17,7 +17,7 @@ const DialogBox = ({
       </div>
       <div className="">
         <div className="text-xs opacity-60 py-2">{content}</div>
-        <div className="flex justify-end py-2">
+        <div className="flex justify-end py-2 gap-x-1">
           <NeutralButton onClick={negativeAnswerAction}>
             {" "}
             {negativeAnswer}
