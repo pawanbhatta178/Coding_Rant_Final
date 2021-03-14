@@ -3,7 +3,7 @@ import { BiMessageAltDetail, BiTrophy, BiHistory } from "react-icons/bi";
 
 const baseStyle = "button-base-style font-thin  px-2 h-7 flex items-center";
 
-const selectedStyle = `${baseStyle} border-b-2 border-accent font-light`;
+const selectedStyle = `${baseStyle} border-b-2 border-accent text-accent font-light`;
 
 const TabHeader = ({ name, id, handleTabClick, selected }) => {
   return (

@@ -7,7 +7,7 @@ const NoPreviousSubmission = () => {
       <div className="icon-accent text-6xl">
         <AiOutlineOrderedList />{" "}
       </div>
-      <div className="text-lg text-accent font-extralight text-center">
+      <div className="text-base  opacity-30  font-extralight text-center">
         All of your submissions that was ever submitted for this challenge will
         appear here.
       </div>

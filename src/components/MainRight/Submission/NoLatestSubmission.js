@@ -7,7 +7,7 @@ const NoLatestSubmission = () => {
       <div className="icon-accent text-6xl">
         <IoCloudUploadSharp />{" "}
       </div>
-      <div className="text-lg text-accent font-extralight text-center">
+      <div className="text-base opacity-30 font-extralight text-center">
         Submit the code and see what the result will be like.
       </div>
     </div>

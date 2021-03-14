@@ -19,7 +19,7 @@ const SortIcon = ({ show }) => {
 };
 
 const LeaderBoard = ({ show, activeQuestionId }) => {
-  const { rankingData, basedOn, changeBasedOn, isLoading } = useLeaderBoard({
+  const { rankingData, basedOn, changeBasedOn } = useLeaderBoard({
     questionId: activeQuestionId,
   });
 
@@ -32,7 +32,7 @@ const LeaderBoard = ({ show, activeQuestionId }) => {
         <div className="grid-title text-secondary pl-1"></div>
         <div className="grid-title text-secondary "></div>
         <div className="grid-title text-secondary "></div>
-        <div className="grid-title text-secondary font-extralight">
+        <div className="grid-title text-secondary font-extralight pr-4">
           Username
         </div>
         <div
@@ -57,7 +57,7 @@ const LeaderBoard = ({ show, activeQuestionId }) => {
           TimeTaken
           <SortIcon show={basedOn === "time_taken"} />
         </div>
-        {rankingData.map((challenger, i) => (
+        {rankingData?.map((challenger, i) => (
           <React.Fragment key={i}>
             <div
               className={`flex items-center pl-2 ${
