@@ -5,12 +5,7 @@ import { useMutation } from "react-query";
 import { compile } from "../../api/Compile";
 import useLocalStorage from "../../components/common/useLocalStorage";
 import { AppContext } from "../../AppContext";
-
-const langId = {
-  javascript: "js",
-  typescript: "ts",
-  java: "java",
-};
+import { langId } from "../../constants/languages";
 
 const useWorkspace = () => {
   useScrollToTop();
@@ -34,7 +29,7 @@ const useWorkspace = () => {
     ""
   );
 
-  const changeCode = (newCode, _) => {
+  const changeCode = (newCode, _ = undefined) => {
     setCode(newCode);
   };
 

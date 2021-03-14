@@ -16,9 +16,10 @@ const Editor = ({
 }) => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { theme, toggleTheme } = useEditor({
+  const { theme, toggleTheme, retrieveDefaultCode } = useEditor({
     activeQuestionId,
     activeLanguage,
+    changeCode,
   });
 
   function handleEditorDidMount(_, editor) {
@@ -33,6 +34,7 @@ const Editor = ({
         theme={theme}
         activeLanguage={activeLanguage}
         changeActiveLanguage={changeActiveLanguage}
+        retrieveDefaultCode={retrieveDefaultCode}
       />
       <MonacoEditor
         language={activeLanguage}
