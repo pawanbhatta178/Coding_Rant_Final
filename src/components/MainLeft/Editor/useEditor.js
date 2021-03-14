@@ -2,9 +2,11 @@ import useLocalStorage from "../../common/useLocalStorage";
 import { useMutation } from "react-query";
 import { getDefaultCode } from "../../../api/DefaultCode";
 import { langId } from "../../../constants/languages";
+import { useState } from "react";
 
 const useEditor = ({ activeQuestionId, activeLanguage, changeCode }) => {
   const [theme, setTheme] = useLocalStorage("theme", "vs-dark");
+  const [isDialogBoxOn, setIsDialogBoxOn] = useState(false);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "vs-dark" : "light");
@@ -24,12 +26,26 @@ const useEditor = ({ activeQuestionId, activeLanguage, changeCode }) => {
       questionId: activeQuestionId,
       language: langId[activeLanguage],
     });
+    setIsDialogBoxOn(false);
+  };
+
+  const doNotRetrieveDefaultCode = () => {
+    setIsDialogBoxOn(false);
+  };
+
+  const toggleDialogBox = () => {
+    setIsDialogBoxOn((current) => {
+      return !current;
+    });
   };
 
   return {
     theme,
     toggleTheme,
     retrieveDefaultCode,
+    doNotRetrieveDefaultCode,
+    isDialogBoxOn,
+    toggleDialogBox,
   };
 };
 

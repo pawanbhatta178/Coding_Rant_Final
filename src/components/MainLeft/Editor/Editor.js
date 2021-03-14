@@ -3,6 +3,7 @@ import MonacoEditor from "@monaco-editor/react";
 import useEditor from "./useEditor";
 import EditorNav from "../EditorNav/EditorNav";
 import EditorAction from "../EditorAction/EditorAction";
+import RevertToDefault from "./RevertToDefault";
 
 const Editor = ({
   isCodeSubmitting,
@@ -16,7 +17,14 @@ const Editor = ({
 }) => {
   const editorRef = useRef();
   const [setIsEditorReady] = useState(false);
-  const { theme, toggleTheme, retrieveDefaultCode } = useEditor({
+  const {
+    theme,
+    toggleTheme,
+    retrieveDefaultCode,
+    doNotRetrieveDefaultCode,
+    isDialogBoxOn,
+    toggleDialogBox,
+  } = useEditor({
     activeQuestionId,
     activeLanguage,
     changeCode,
@@ -34,7 +42,7 @@ const Editor = ({
         theme={theme}
         activeLanguage={activeLanguage}
         changeActiveLanguage={changeActiveLanguage}
-        retrieveDefaultCode={retrieveDefaultCode}
+        retrieveDefaultCode={toggleDialogBox}
       />
       <MonacoEditor
         language={activeLanguage}
@@ -48,6 +56,12 @@ const Editor = ({
         onCodeSubmit={onCodeSubmit}
         isCodeSubmitting={isCodeSubmitting}
         changeActiveQuestionId={changeActiveQuestionId}
+      />
+      <RevertToDefault
+        show={isDialogBoxOn}
+        toggle={toggleDialogBox}
+        retrieveDefaultCode={retrieveDefaultCode}
+        doNotRetrieveDefaultCode={doNotRetrieveDefaultCode}
       />
     </div>
   );
