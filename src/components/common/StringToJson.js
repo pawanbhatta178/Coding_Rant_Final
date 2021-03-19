@@ -14,4 +14,4 @@ const StringToJson = (array, keyToConvert) => {
   });
   return newArray;
 };
-module.exports = { StringToJson };
+export { StringToJson };
