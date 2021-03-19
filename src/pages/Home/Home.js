@@ -10,7 +10,7 @@ const Home = () => {
       <NavBar />
       <div className="flex flex-col px-4 sm:px-6 md:px-8 pb-12 min-h-screen">
         <h1 className="text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-primary mt-10 mb-8 sm:mt-14 sm:mb-10 ">
-          Start understanding the code and algorithms you write.
+          Start understanding the code and algorithms.
         </h1>
         <p className="max-w-screen-lg text-lg sm:text-2xl sm:leading-10 font-medium mb-10 sm:mb-11 text-secondary">
           With our hand picked coding challenges, you not only will be ready for
