@@ -7,7 +7,12 @@ export const useLocalStorage = (key, initialValue) => {
     try {
       const item = window.localStorage.getItem(key);
       setStoredValue((current) => {
-        return item ? JSON.parse(item) : current;
+        try {
+          return JSON.parse(item) ?? current;
+        } catch (err) {
+          console.log("caught the err");
+          return current;
+        }
       });
     } catch (err) {
       console.error(err);
