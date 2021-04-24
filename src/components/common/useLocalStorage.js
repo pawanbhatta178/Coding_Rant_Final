@@ -10,7 +10,6 @@ export const useLocalStorage = (key, initialValue) => {
         try {
           return JSON.parse(item) ?? current;
         } catch (err) {
-          console.log("caught the err");
           return current;
         }
       });
